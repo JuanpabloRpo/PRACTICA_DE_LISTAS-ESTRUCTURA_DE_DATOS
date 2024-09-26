@@ -1,0 +1,48 @@
+Cedula: 
+Nombre: 
+Apellido: 
+Telefono: 
+Semestre actual: 0
+Promedio acumulado: 0.0
+Serial: 
+-----------------------------
+Cedula: 
+Nombre: 
+Apellido: 
+Telefono: 
+Semestre actual: 0
+Promedio acumulado: 0.0
+Serial: 
+-----------------------------
+Cedula: 123
+Nombre: juan
+Apellido: restrepo
+Telefono: 3126586828
+Semestre actual: 4
+Promedio acumulado: 3.8
+Serial: a4k
+-----------------------------
+Cedula: 4567
+Nombre: pedor
+Apellido: camm
+Telefono: 123477
+Semestre actual: 2
+Promedio acumulado: 4.0
+Serial: 789
+-----------------------------
+Cedula: 123
+Nombre: juan
+Apellido: restrepo
+Telefono: 3126586828
+Semestre actual: 4
+Promedio acumulado: 3.8
+Serial: a4k
+-----------------------------
+Cedula: 4567
+Nombre: pedor
+Apellido: camm
+Telefono: 123477
+Semestre actual: 2
+Promedio acumulado: 4.0
+Serial: 789
+-----------------------------

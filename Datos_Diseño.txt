@@ -1,0 +1,80 @@
+Cedula: 
+Nombre: 
+Apellido: 
+Telefono: 
+Modalidad de estudio: 
+cantidad de asignaturas: 0
+Serial: 0
+-----------------------------
+Cedula: 
+Nombre: 
+Apellido: 
+Telefono: 
+Modalidad de estudio: 
+cantidad de asignaturas: 0
+Serial: 0
+-----------------------------
+Cedula: 321
+Nombre: camilo
+Apellido: jaramillo
+Telefono: 3114758491
+Modalidad de estudio: 
+cantidad de asignaturas: 0
+Serial: 0
+-----------------------------
+Cedula: 321
+Nombre: camilo
+Apellido: jaramillo
+Telefono: 3114758491
+Modalidad de estudio: 
+cantidad de asignaturas: 0
+Serial: 0
+-----------------------------
+Cedula: 321
+Nombre: camilo
+Apellido: jaramillo
+Telefono: 3114758491
+Modalidad de estudio: 
+cantidad de asignaturas: 0
+Serial: 45678
+-----------------------------
+Cedula: 4578
+Nombre: jajaj
+Apellido: ñññññ
+Telefono: 45678811
+Modalidad de estudio: 
+cantidad de asignaturas: 0
+Serial: 45678
+-----------------------------
+Cedula: 4578
+Nombre: jajaj
+Apellido: ñññññ
+Telefono: 45678811
+Modalidad de estudio: 
+cantidad de asignaturas: 0
+Serial: 45678
+-----------------------------
+Cedula: 4578
+Nombre: jajaj
+Apellido: ñññññ
+Telefono: 45678811
+Modalidad de estudio: 
+cantidad de asignaturas: 0
+Serial: 7444
+-----------------------------
+Cedula: 321
+Nombre: camilo
+Apellido: jaramillo
+Telefono: 3114758491
+Modalidad de estudio: Virtual
+cantidad de asignaturas: 4
+Serial: 45678
+-----------------------------
+Cedula: 4578
+Nombre: jajaj
+Apellido: ñññññ
+Telefono: 45678811
+Modalidad de estudio: Presencial
+cantidad de asignaturas: 10
+Serial: 7444
+-----------------------------
