@@ -6,6 +6,7 @@ import java.util.LinkedList;
 public class Importar {
 
     public Importar() {
+
     }
 
     public LinkedList<ESTUDIANTE_INGENIERIA> importarArchivoIngnieria(){
@@ -59,7 +60,7 @@ public class Importar {
                 }
                 listaDePersonas.add(new ESTUDIANTE_INGENIERIA(cedula,nombre,apellido,telefono,numeroDelSemestreActual,promedioAcumulado,serial));
             }
-            System.out.println("\nArchivo importado correctamente\n");
+
         }catch (IOException e) {
             e.printStackTrace();
         }
@@ -119,7 +120,7 @@ public class Importar {
                 }
                 listaDePersonas.add(new ESTUDIANTE_DISENO(cedula,nombre,apellido,telefono,modalidadDeEstudio,cantidadDeAsignaturas,serial));
             }
-            System.out.println("\nArchivo importado correctamente\n");
+
         }catch (IOException e) {
             e.printStackTrace();
         }
@@ -127,4 +128,115 @@ public class Importar {
 
         return listaDePersonas;
     }
+
+    public LinkedList<COMPUTADOR_PORTATIL> importarArchivoComputador(){
+
+        String rutaArchivo = "Datos_Computador.txt";
+        File archivo = new File(rutaArchivo);
+        if (!archivo.exists()) {
+            return null;
+        }
+
+        LinkedList<COMPUTADOR_PORTATIL> Dispositivos = new LinkedList<>();
+        String line;
+        String serial="";
+        String marca="";
+        double tamano=0.0;
+        double precio=0.0;
+        String sistemaOperativo="";
+        String procesador="";
+
+        try (BufferedReader cp = new BufferedReader(new FileReader(rutaArchivo))){
+            while ((line = cp.readLine()) != null){
+
+                if (line.startsWith("serial: ")){
+                    serial=line.substring(8);
+                    continue;
+                }
+                if (line.startsWith("marca: ")){
+                    marca=line.substring(7);
+                    continue;
+                }
+                if (line.startsWith("tamaño: ")){
+                    tamano=Double.parseDouble(line.substring(8));
+                    continue;
+                }
+                if (line.startsWith("precio: ")){
+                    precio=Double.parseDouble(line.substring(8));
+                    continue;
+                }
+                if (line.startsWith("sistema Operativo: ")){
+                    sistemaOperativo=line.substring(19);
+                    continue;
+                }
+                if (line.startsWith("procesador: ")){
+                    procesador=line.substring(12);
+                    continue;
+                }
+                Dispositivos.add(new COMPUTADOR_PORTATIL(serial,marca,tamano,precio,sistemaOperativo,procesador));
+            }
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        return Dispositivos;
+    }
+
+    public LinkedList<TABLETA_GRAFICA> importarArchivoTableta(){
+
+        String rutaArchivo = "Datos_Tableta.txt";
+        File archivo = new File(rutaArchivo);
+        if (!archivo.exists()) {
+            return null;
+        }
+
+        LinkedList<TABLETA_GRAFICA> Dispositivos = new LinkedList<>();
+        String line;
+        String serial="";
+        String marca="";
+        double tamano=0.0;
+        double precio=0.0;
+        String almacenamiento="";
+        double peso=0.0;
+
+        try (BufferedReader cp = new BufferedReader(new FileReader(rutaArchivo))){
+            while ((line = cp.readLine()) != null){
+
+                if (line.startsWith("serial: ")){
+                    serial=line.substring(8);
+                    continue;
+                }
+                if (line.startsWith("marca: ")){
+                    marca=line.substring(7);
+                    continue;
+                }
+                if (line.startsWith("tamaño: ")){
+                    tamano=Double.parseDouble(line.substring(8));
+                    continue;
+                }
+                if (line.startsWith("precio: ")){
+                    precio=Double.parseDouble(line.substring(8));
+                    continue;
+                }
+                if (line.startsWith("almacenamiento: ")){
+                    almacenamiento=line.substring(16);
+                    continue;
+                }
+                if (line.startsWith("peso: ")){
+                    peso=Double.parseDouble(line.substring(6));
+                    continue;
+                }
+                Dispositivos.add(new TABLETA_GRAFICA(serial,marca,tamano,precio,almacenamiento,peso));
+            }
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        return Dispositivos;
+    }
+
 }

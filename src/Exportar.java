@@ -57,6 +57,54 @@ public class Exportar {
                 e.printStackTrace();
             }
         }
-
     }
+
+    public void exportarARchivoComputador(LinkedList<COMPUTADOR_PORTATIL> listaDeDispositivos){
+
+        if (listaDeDispositivos.isEmpty()){
+            System.out.println("\nLista vacia, por favor ingrese los datos\n");
+        }else {
+            try (FileWriter archivo = new FileWriter("Datos_Computador.txt")){
+//                archivo.write("\n--- COMPUTADORES ---\n");
+                for (COMPUTADOR_PORTATIL dispositivo: listaDeDispositivos){
+                    archivo.write("serial: "+dispositivo.getSerial()+ "\n");
+                    archivo.write("marca: "+dispositivo.getMarca()+ "\n");
+                    archivo.write("tamaño: "+dispositivo.getTamano()+ "\n");
+                    archivo.write("precio: "+dispositivo.getPrecio()+ "\n");
+                    archivo.write("sistema Operativo: "+dispositivo.getSistemaOperativo()+ "\n");
+                    archivo.write("procesador: "+dispositivo.getProcesador()+ "\n");
+                    archivo.write("-----------------------------"+ "\n");
+                }
+                archivo.write("");
+                System.out.println("\nArchivo exportado correctamente - Diseño\n");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void exportarARchivoTableta(LinkedList<TABLETA_GRAFICA> listaDeDispositivos){
+
+        if (listaDeDispositivos.isEmpty()){
+            System.out.println("\nLista vacia, por favor ingrese los datos\n");
+        }else {
+            try (FileWriter archivo = new FileWriter("Datos_Tableta.txt")){
+//                archivo.write("\n--- Tabletas ---\n");
+                for (TABLETA_GRAFICA dispositivo: listaDeDispositivos){
+                    archivo.write("serial: "+dispositivo.getSerial()+ "\n");
+                    archivo.write("marca: "+dispositivo.getMarca()+ "\n");
+                    archivo.write("tamaño: "+dispositivo.getTamano()+ "\n");
+                    archivo.write("precio: "+dispositivo.getPrecio()+ "\n");
+                    archivo.write("almacenamiento: "+dispositivo.getAlmacenamiento()+ "\n");
+                    archivo.write("peso: "+dispositivo.getPeso()+ "\n");
+                    archivo.write("-----------------------------"+ "\n");
+                }
+                archivo.write("");
+                System.out.println("\nArchivo exportado correctamente - Diseño\n");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }

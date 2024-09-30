@@ -4,6 +4,7 @@ public class ESTUDIANTE_INGENIERIA extends Persona{
     private String serial;
 
 
+
     public ESTUDIANTE_INGENIERIA(String cedula, String nombre, String apellido, String telefono,int numeroDelSemestreActual, double promedioAcumulado, String serial) {
         super(cedula,nombre,apellido,telefono);
         this.numeroDelSemestreActual = numeroDelSemestreActual;

@@ -1,0 +1,28 @@
+serial: 6547
+marca: lenovo
+tamaño: 5.2
+precio: 19.5
+sistema Operativo: windows
+procesador: Intel
+-----------------------------
+serial: 789ggg
+marca: lenovo
+tamaño: 5.6
+precio: 25.7
+sistema Operativo: windows
+procesador: AMD
+-----------------------------
+serial: 45sdw
+marca: Asus
+tamaño: 5.2
+precio: 19.5
+sistema Operativo: windows
+procesador: Intel
+-----------------------------
+serial: 789wa
+marca: Asus
+tamaño: 4.9
+precio: 30.9
+sistema Operativo: windows
+procesador: AMD
+-----------------------------

@@ -1,0 +1,32 @@
+Cedula: 123
+Nombre: juan
+Apellido: restrepo
+Telefono: 3126586828
+Modalidad de estudio: presencial
+cantidad de asignaturas: 4
+Serial: 4578
+-----------------------------
+Cedula: 321
+Nombre: camilo
+Apellido: bedoya
+Telefono: 45789
+Modalidad de estudio: presencial
+cantidad de asignaturas: 4
+Serial: 2434
+-----------------------------
+Cedula: 456
+Nombre: yefri
+Apellido: alzate
+Telefono: 475566
+Modalidad de estudio: virtual
+cantidad de asignaturas: 3
+Serial: 4355
+-----------------------------
+Cedula: 654
+Nombre: jose
+Apellido: cordoba
+Telefono: 14476654
+Modalidad de estudio: virtual
+cantidad de asignaturas: 4
+Serial: 11345
+-----------------------------

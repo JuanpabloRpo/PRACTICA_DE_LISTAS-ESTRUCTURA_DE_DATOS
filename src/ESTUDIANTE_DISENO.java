@@ -33,4 +33,5 @@ public class ESTUDIANTE_DISENO extends Persona{
     public void setSerial(int serial) {
         this.serial = serial;
     }
+
 }

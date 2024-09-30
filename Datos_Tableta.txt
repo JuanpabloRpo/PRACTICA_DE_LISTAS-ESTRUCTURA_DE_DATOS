@@ -1,0 +1,28 @@
+serial: 457778800
+marca: hawei
+tamaño: 5.2
+precio: 19.5
+almacenamiento: 45
+peso: 12.0
+-----------------------------
+serial: 45223357
+marca: Oppo
+tamaño: 5.2
+precio: 19.5
+almacenamiento: 45
+peso: 12.0
+-----------------------------
+serial: 0001247
+marca: apple
+tamaño: 5.2
+precio: 19.5
+almacenamiento: 45
+peso: 12.0
+-----------------------------
+serial: 7894145
+marca: Samsung
+tamaño: 5.2
+precio: 19.5
+almacenamiento: 45
+peso: 12.0
+-----------------------------
