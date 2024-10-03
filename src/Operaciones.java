@@ -27,11 +27,13 @@ public class Operaciones {
             estudiantesDisenoGlobal=verificar2;
         }
 
+        // se importa y se verifica que haya datos sobre los computadores
         LinkedList<TABLETA_GRAFICA> verificar3 = importar.importarArchivoTableta();
         if (verificar3!=null){
             tabletasGraficasGlobal=verificar3;
         }
 
+        // se importa y se verifica que haya datos sobre los computadores
         LinkedList<COMPUTADOR_PORTATIL> verificar4 = importar.importarArchivoComputador();
         if (verificar4!=null){
             computadoresPortatilesGlobal=verificar4;
@@ -49,6 +51,7 @@ public class Operaciones {
         LinkedList<TABLETA_GRAFICA> tabletasGraficas = tabletasGraficasGlobal;
         LinkedList<COMPUTADOR_PORTATIL> computadoresPortatiles = computadoresPortatilesGlobal;
         Validacion validar=new Validacion();
+        Llenado llenar=new Llenado();
         String lineas="--------------------------------------------";
 
         boolean flagMenu=true;
@@ -86,6 +89,12 @@ public class Operaciones {
                                 switch (opcionIngenieria){
                                     case "1":
                                         System.out.println("null");
+
+                                        ESTUDIANTE_INGENIERIA newEstudiante=llenar.llenarIngeniero();
+                                        estudiantesIngenieria.add(newEstudiante);
+
+                                        COMPUTADOR_PORTATIL newComputador=llenar.llenarComputador(newEstudiante.getSerial());
+                                        computadoresPortatiles.add(newComputador);
 
                                         break;
                                     case "2":
@@ -174,6 +183,9 @@ public class Operaciones {
             }
         }
     }
+    // empiecen de aqui para abajo
+
+
 
     // ultimo metodo
     // Metodo para exportar los estudiantes ingresados
@@ -189,7 +201,6 @@ public class Operaciones {
     // Metodo para exportar los dispositivos
     private void exportarDispositivos(LinkedList<TABLETA_GRAFICA> tabletasGraficas,LinkedList<COMPUTADOR_PORTATIL> computadoresPortatiles){
         Exportar exportar=new Exportar();
-
         exportar.exportarARchivoTableta(tabletasGraficas);
         exportar.exportarARchivoComputador(computadoresPortatiles);
     }
