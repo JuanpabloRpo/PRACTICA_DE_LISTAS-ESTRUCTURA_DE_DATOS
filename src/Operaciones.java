@@ -2,11 +2,13 @@ import java.io.*;
 import java.util.LinkedList;
 public class Operaciones {
 
+    // Variables Globales  "No tocar"
     private LinkedList<ESTUDIANTE_INGENIERIA> estudiantesIngenieriaGlbal = new LinkedList<>();
     private LinkedList<ESTUDIANTE_DISENO> estudiantesDisenoGlobal = new LinkedList<>();
     private LinkedList<TABLETA_GRAFICA> tabletasGraficasGlobal = new LinkedList<>();
     private LinkedList<COMPUTADOR_PORTATIL> computadoresPortatilesGlobal = new LinkedList<>();
-
+    private int contadorPersonas;
+    private int contadorDispositivos;
 
     public Operaciones() {
         Importar importar=new Importar();
@@ -17,24 +19,25 @@ public class Operaciones {
         LinkedList<ESTUDIANTE_INGENIERIA> verificar = importar.importarArchivoIngnieria();
         if (verificar!=null){
             estudiantesIngenieriaGlbal =verificar;
-            System.out.println(lineas);
-            System.out.println("Archivo de ingenieria importado correctamente");
-        }else {
-            System.out.println(lineas);
-            System.out.println("No hay estudiantes de ingenieria guardados");
-
         }
 
         // se importa y se verifica que haya datos sobre los estudiantes de diseño
         LinkedList<ESTUDIANTE_DISENO> verificar2 = importar.importarArchivoDiseno();
         if (verificar2!=null){
             estudiantesDisenoGlobal=verificar2;
-            System.out.println(lineas);
-            System.out.println("Archivo de diseño importado correctamente");
-        }else {
-            System.out.println(lineas);
-            System.out.println("No hay estudiantes de diseño guardados");
         }
+
+        LinkedList<TABLETA_GRAFICA> verificar3 = importar.importarArchivoTableta();
+        if (verificar3!=null){
+            tabletasGraficasGlobal=verificar3;
+        }
+
+        LinkedList<COMPUTADOR_PORTATIL> verificar4 = importar.importarArchivoComputador();
+        if (verificar4!=null){
+            computadoresPortatilesGlobal=verificar4;
+        }
+
+
     }
 
     public void menu() throws IOException{
@@ -43,9 +46,10 @@ public class Operaciones {
 
         LinkedList<ESTUDIANTE_INGENIERIA> estudiantesIngenieria = estudiantesIngenieriaGlbal;
         LinkedList<ESTUDIANTE_DISENO> estudiantesDiseno = estudiantesDisenoGlobal;
+        LinkedList<TABLETA_GRAFICA> tabletasGraficas = tabletasGraficasGlobal;
+        LinkedList<COMPUTADOR_PORTATIL> computadoresPortatiles = computadoresPortatilesGlobal;
         Validacion validar=new Validacion();
         String lineas="--------------------------------------------";
-
 
         boolean flagMenu=true;
 
@@ -158,7 +162,8 @@ public class Operaciones {
                         System.out.println("Mantenimiento");
                         break;
                     case "4":
-                        exportarEstudiantes(estudiantesIngenieriaGlbal,estudiantesDisenoGlobal);
+                        exportarEstudiantes(estudiantesIngenieria,estudiantesDiseno);
+                        exportarDispositivos(tabletasGraficas,computadoresPortatiles);
                         flagMenu=false;
                         break;
                     default:
@@ -170,18 +175,24 @@ public class Operaciones {
         }
     }
 
-
-    // metodos de ingenieria y diseño se llamen igual
-
-    public void registrarIngenieria(){
-        Llenado llenado=new Llenado();
-
-    }
-
     // ultimo metodo
     // Metodo para exportar los estudiantes ingresados
-    private void exportarEstudiantes(LinkedList<ESTUDIANTE_INGENIERIA> estudiantesIngenieriaGlbal,LinkedList<ESTUDIANTE_DISENO> estudiantesDisenoGlobal){
+    private void exportarEstudiantes(LinkedList<ESTUDIANTE_INGENIERIA> estudiantesIngenieria,LinkedList<ESTUDIANTE_DISENO> estudiantesDiseno){
         Exportar exportar=new Exportar();
+
+        exportar.exportarARchivoIngenieria(estudiantesIngenieria);
+        exportar.exportarARchivoDiseno(estudiantesDiseno);
+
+
     }
+
+    // Metodo para exportar los dispositivos
+    private void exportarDispositivos(LinkedList<TABLETA_GRAFICA> tabletasGraficas,LinkedList<COMPUTADOR_PORTATIL> computadoresPortatiles){
+        Exportar exportar=new Exportar();
+
+        exportar.exportarARchivoTableta(tabletasGraficas);
+        exportar.exportarARchivoComputador(computadoresPortatiles);
+    }
+
 
 }

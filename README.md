@@ -2,5 +2,5 @@
 ---
 > **Integrantes:**
 * **Christian Copete Franco**
-* David Molina Alvarez
-* Juan Pablo Restrepo Laverde
+* **David Molina Alvarez**
+* **Juan Pablo Restrepo Laverde**

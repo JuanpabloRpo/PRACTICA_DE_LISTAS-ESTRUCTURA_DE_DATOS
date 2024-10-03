@@ -26,7 +26,6 @@ public class Exportar {
                     archivo.write("-----------------------------"+ "\n");
                 }
                 archivo.write("");
-                System.out.println("\nArchivo exportado correctamente - Ingenieria\n");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -52,7 +51,6 @@ public class Exportar {
                     archivo.write("-----------------------------"+ "\n");
                 }
                 archivo.write("");
-                System.out.println("\nArchivo exportado correctamente - Diseño\n");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -76,7 +74,6 @@ public class Exportar {
                     archivo.write("-----------------------------"+ "\n");
                 }
                 archivo.write("");
-                System.out.println("\nArchivo exportado correctamente - Diseño\n");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -100,7 +97,6 @@ public class Exportar {
                     archivo.write("-----------------------------"+ "\n");
                 }
                 archivo.write("");
-                System.out.println("\nArchivo exportado correctamente - Diseño\n");
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -37,4 +37,33 @@ public class Validacion {
         }
     }
 
+    // Devuelve un true si contiene caracteres especiales
+    public boolean withOutSpecialCharacter(String cadena){
+
+        int ascii;
+
+        for (char carater: cadena.toCharArray()){
+            ascii = carater;
+            if ((( ascii > 0 ) && ( ascii < 48 )) || (( ascii > 57 ) && ( ascii < 65 ))|| (( ascii > 90) && ( ascii < 97 )) || ( ascii > 122 )){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Devuelve un true si contiene caracteres especiales y numeros
+    public boolean withOutSpecialCharacterAndNumbers(String cadena){
+
+        int ascii;
+
+        for (char carater: cadena.toCharArray()){
+            ascii= carater;
+            if ((( ascii > 0 ) && ( ascii < 65 )) || (( ascii > 90 ) && ( ascii < 97 )) || ( ascii > 122 )){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }
