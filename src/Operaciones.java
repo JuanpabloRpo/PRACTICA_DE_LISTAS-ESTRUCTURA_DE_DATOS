@@ -186,7 +186,6 @@ public class Operaciones {
     // empiecen de aqui para abajo
 
 
-
     // ultimo metodo
     // Metodo para exportar los estudiantes ingresados
     private void exportarEstudiantes(LinkedList<ESTUDIANTE_INGENIERIA> estudiantesIngenieria,LinkedList<ESTUDIANTE_DISENO> estudiantesDiseno){

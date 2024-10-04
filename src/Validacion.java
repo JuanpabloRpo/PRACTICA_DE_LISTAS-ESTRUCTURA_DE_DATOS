@@ -81,7 +81,7 @@ public class Validacion {
 
         for (char carater: cadena.toCharArray()){
             ascii= carater;
-            if ((( ascii > 0 ) && ( ascii < 32 )) || (( ascii > 32 ) && ( ascii < 65 )) || (( ascii > 90 ) && ( ascii < 97 )) || ( ascii > 122 )){
+            if ((( ascii > 0 ) && ( ascii < 32 )) || (( ascii > 32 ) && ( ascii < 65 )) || (( ascii > 90 ) && ( ascii < 97 )) || ((ascii > 122) && (ascii<130)) || ((ascii>130) && (ascii<160)) || (ascii>165) ){
                 return false;
             }
         }
@@ -99,7 +99,7 @@ public class Validacion {
                 // para saber si es un numero entero
                 IsTrue = isInt(cadena);
                 while (!IsTrue){
-                    System.out.println("Dato incorrecto, Digite nuevamente: ");
+                    System.out.println(cadena+" No es un entero, Digite nuevamente: ");
                     cadena= cp.readLine();
                     IsTrue=isInt(cadena);
                 }
@@ -108,7 +108,7 @@ public class Validacion {
                 // para saber si es un numero real
                 IsTrue = isDouble(cadena);
                 while (!IsTrue){
-                    System.out.println("Dato incorrecto, Digite nuevamente: ");
+                    System.out.println(cadena+" No es un numero real, Digite nuevamente: ");
                     cadena= cp.readLine();
                     IsTrue=isDouble(cadena);
                 }
@@ -116,7 +116,7 @@ public class Validacion {
             case 3:
                 IsTrue = withOutSpecialCharacter(cadena);
                 while (!IsTrue){
-                    System.out.println("Dato incorrecto, Digite nuevamente: ");
+                    System.out.println(cadena+" Contiene caracteres especiales, Digite nuevamente: ");
                     cadena= cp.readLine();
                     IsTrue=withOutSpecialCharacter(cadena);
                 }
@@ -124,7 +124,7 @@ public class Validacion {
             case 4:
                 IsTrue = withOutSpecialCharacterAndNumbers(cadena);
                 while (!IsTrue){
-                    System.out.println("Dato incorrecto, Digite nuevamente: ");
+                    System.out.println(cadena+" Contiene caracteres especiales y numeros, Digite nuevamente: ");
                     cadena= cp.readLine();
                     IsTrue=withOutSpecialCharacterAndNumbers(cadena);
                 }
@@ -132,15 +132,17 @@ public class Validacion {
             case 5:
                 IsTrue = forFullName(cadena);
                 while (!IsTrue){
-                    System.out.println("Dato incorrecto, Digite nuevamente: ");
+                    System.out.println(cadena + " Contiene caracteres especiales y numeros, Digite nuevamente: ");
                     cadena= cp.readLine();
                     IsTrue=forFullName(cadena);
                 }
                 return cadena;
             default:
-                System.out.println("caso incorrecto, digitelo nuevamente: ");
-                String opcionNueva= cp.readLine();
-                eleccionAValidar(1,opcionNueva);
+                System.out.println("Mijo caso incorrecto utilice bien las cosas, digite el caso manual nuevamente: ");
+                System.out.println("Ya sabe que tiene que corregir la opcion del metodo no hay una opcion "+opcion+" mire bien como utilizar el metodo :)");
+                int opcionNueva= Integer.parseInt(eleccionAValidar(1,cp.readLine()));
+                cadena = eleccionAValidar(opcionNueva,cadena);
+
         }
         return cadena;
     }
