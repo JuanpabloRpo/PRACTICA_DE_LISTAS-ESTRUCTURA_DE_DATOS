@@ -90,7 +90,7 @@ public class Operaciones {
                                     case "1":
                                         System.out.println("null");
 
-                                        ESTUDIANTE_INGENIERIA newEstudiante=llenar.llenarIngeniero();
+                                        ESTUDIANTE_INGENIERIA newEstudiante = llenar.llenarIngeniero();
                                         estudiantesIngenieria.add(newEstudiante);
 
                                         COMPUTADOR_PORTATIL newComputador=llenar.llenarComputador(newEstudiante.getSerial());

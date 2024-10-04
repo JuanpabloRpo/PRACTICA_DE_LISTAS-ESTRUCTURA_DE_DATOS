@@ -21,16 +21,27 @@ public class Llenado {
         String serial="";
 
         System.out.println("Ingrese la cedula: ");
-        cedula=cp.readLine();
-        validar.eleccionAValidar(3,cedula);
+        cedula =  validar.eleccionAValidar(3,cp.readLine());
+       
+        System.out.println("Ingrese el nombre: ");
+        nombre = validar.eleccionAValidar(4,cp.readLine());
+        
+        System.out.println("Ingrese el apellido: ");
+        apellido = validar.eleccionAValidar(4,cp.readLine());
+ 
+        System.out.println("Ingrese el telefono: ");
+        telefono =  validar.eleccionAValidar(3,cp.readLine());
+       
+        System.out.println("Ingrese el numero del semestre actual: ");
+        numeroDelSemestreActual = Integer.parseInt(validar.eleccionAValidar(1,cp.readLine()));
+        
+        System.out.println("Ingrese el promedio acumulado: ");
+        promedioAcumulado = Double.parseDouble(validar.eleccionAValidar(2,cp.readLine()));
+        
+        System.out.println("Ingrese el numero de serial: ");
+        serial =  validar.eleccionAValidar(3,cp.readLine());
 
-        System.out.println("Ingrese la cedula: ");
-        cedula=cp.readLine();
-        validar.eleccionAValidar(3,cedula);
-
-
-
-        return null;
+        return new ESTUDIANTE_INGENIERIA(cedula, nombre, apellido, telefono, numeroDelSemestreActual, promedioAcumulado, serial);
     }
 
     public COMPUTADOR_PORTATIL llenarComputador(String newSerial){
