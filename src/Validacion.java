@@ -17,7 +17,12 @@ public class Validacion {
             // verificamos si no contiene letras
             double newDato=Double.parseDouble(dato);
 
-            // verificamos que sea entero
+            // verificamos que no sea negativo
+            if (newDato < 0){
+                return false;
+            }
+
+            // verificamos que sea entero y positivo
             if ((newDato>(int)newDato) && (newDato<(int)newDato+1)){
                 return false;
             }
@@ -38,7 +43,8 @@ public class Validacion {
             // verificamos si no contiene letras
             double newDato=Double.parseDouble(dato);
 
-            return true;
+            // verdadero o falso
+            return newDato>-1;
 
         }catch (Exception e){
             return false;
@@ -99,7 +105,7 @@ public class Validacion {
                 // para saber si es un numero entero
                 IsTrue = isInt(cadena);
                 while (!IsTrue){
-                    System.out.println(cadena+" No es un entero, Digite nuevamente: ");
+                    System.out.println(cadena+" No es un entero positivo, Digite nuevamente: ");
                     cadena= cp.readLine();
                     IsTrue=isInt(cadena);
                 }
@@ -108,7 +114,7 @@ public class Validacion {
                 // para saber si es un numero real
                 IsTrue = isDouble(cadena);
                 while (!IsTrue){
-                    System.out.println(cadena+" No es un numero real, Digite nuevamente: ");
+                    System.out.println(cadena+" No es un numero real positivo, Digite nuevamente: ");
                     cadena= cp.readLine();
                     IsTrue=isDouble(cadena);
                 }
@@ -124,7 +130,7 @@ public class Validacion {
             case 4:
                 IsTrue = withOutSpecialCharacterAndNumbers(cadena);
                 while (!IsTrue){
-                    System.out.println(cadena+" Contiene caracteres especiales y numeros, Digite nuevamente: ");
+                    System.out.println(cadena+" Contiene caracteres especiales ó numeros, Digite nuevamente: ");
                     cadena= cp.readLine();
                     IsTrue=withOutSpecialCharacterAndNumbers(cadena);
                 }
@@ -132,7 +138,7 @@ public class Validacion {
             case 5:
                 IsTrue = forFullName(cadena);
                 while (!IsTrue){
-                    System.out.println(cadena + " Contiene caracteres especiales y numeros, Digite nuevamente: ");
+                    System.out.println(cadena + " Contiene caracteres especiales ó numeros, Digite nuevamente: ");
                     cadena= cp.readLine();
                     IsTrue=forFullName(cadena);
                 }

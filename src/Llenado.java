@@ -9,26 +9,27 @@ public class Llenado {
     public Validacion validar=new Validacion();
 
     public Llenado() {
+
     }
 
     public ESTUDIANTE_INGENIERIA llenarIngeniero() throws IOException {
-        String cedula="";
-        String nombre="";
-        String apellido="";
-        String telefono="";
-        int numeroDelSemestreActual=0;
-        double promedioAcumulado=0.0;
-        String serial="";
+        String cedula;
+        String nombre;
+        String apellido;
+        String telefono;
+        int numeroDelSemestreActual;
+        double promedioAcumulado;
+        String serial;
 
         System.out.println("Ingrese la cedula: ");
         cedula =  validar.eleccionAValidar(3,cp.readLine());
        
         System.out.println("Ingrese el nombre: ");
-        nombre = validar.eleccionAValidar(4,cp.readLine());
+        nombre = validar.eleccionAValidar(5,cp.readLine());
         
         System.out.println("Ingrese el apellido: ");
-        apellido = validar.eleccionAValidar(4,cp.readLine());
- 
+        apellido = validar.eleccionAValidar(5,cp.readLine());
+
         System.out.println("Ingrese el telefono: ");
         telefono =  validar.eleccionAValidar(3,cp.readLine());
        
@@ -37,6 +38,11 @@ public class Llenado {
         
         System.out.println("Ingrese el promedio acumulado: ");
         promedioAcumulado = Double.parseDouble(validar.eleccionAValidar(2,cp.readLine()));
+        while (promedioAcumulado>5){
+            System.out.println("No hay un promedio mayor a 5; En donde estudia usted ??");
+            System.out.println("Ingrese nuevamente el promedio");
+            promedioAcumulado = Double.parseDouble(validar.eleccionAValidar(2,cp.readLine()));
+        }
         
         System.out.println("Ingrese el numero de serial: ");
         serial =  validar.eleccionAValidar(3,cp.readLine());
@@ -44,13 +50,13 @@ public class Llenado {
         return new ESTUDIANTE_INGENIERIA(cedula, nombre, apellido, telefono, numeroDelSemestreActual, promedioAcumulado, serial);
     }
     public ESTUDIANTE_DISENO llenarDiseno() throws IOException{
-        String cedula = "";
-        String nombre = "";
-        String apellido = "";
-        String telefono = "";
-        String modalidad = "";
-        int cantidadAsignaturas = 0;
-        int serial = 0;
+        String cedula;
+        String nombre;
+        String apellido;
+        String telefono;
+        String modalidad;
+        int cantidadAsignaturas;
+        int serial;
 
         System.out.println("Ingrese la cedula: ");
         cedula =  validar.eleccionAValidar(3,cp.readLine());
