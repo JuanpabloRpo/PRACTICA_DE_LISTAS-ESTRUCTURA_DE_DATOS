@@ -7,8 +7,9 @@ public class Operaciones {
     private LinkedList<ESTUDIANTE_DISENO> estudiantesDisenoGlobal = new LinkedList<>();
     private LinkedList<TABLETA_GRAFICA> tabletasGraficasGlobal = new LinkedList<>();
     private LinkedList<COMPUTADOR_PORTATIL> computadoresPortatilesGlobal = new LinkedList<>();
-    private int contadorPersonas;
-    private int contadorDispositivos;
+    private LinkedList<Integer> serialDisenoGlobal = new LinkedList<>();
+    private LinkedList<String> serialIngenieriaGlobal = new LinkedList<>();
+    
 
     public Operaciones() {
         Importar importar=new Importar();
@@ -50,6 +51,8 @@ public class Operaciones {
         LinkedList<ESTUDIANTE_DISENO> estudiantesDiseno = estudiantesDisenoGlobal;
         LinkedList<TABLETA_GRAFICA> tabletasGraficas = tabletasGraficasGlobal;
         LinkedList<COMPUTADOR_PORTATIL> computadoresPortatiles = computadoresPortatilesGlobal;
+        LinkedList<Integer> serialDiseno = serialDisenoGlobal;
+        LinkedList<String> serialIngenieria = serialIngenieriaGlobal;
         Validacion validar=new Validacion();
         Llenado llenar=new Llenado();
         String lineas="--------------------------------------------";
@@ -139,8 +142,9 @@ public class Operaciones {
                             if (validar.isInt(opcionDiseno)){
                                 switch (opcionDiseno){
                                     case "1":
-                                        ESTUDIANTE_DISENO newEstudiante = llenar.llenarDiseno();
+                                        ESTUDIANTE_DISENO newEstudiante = llenar.llenarDiseno(llenar.serialEnteros(serialDiseno));
                                         estudiantesDiseno.add(newEstudiante);
+                                        
 
                                         TABLETA_GRAFICA newTableta_GRAFICA = llenar.llenarTableta_GRAFICA(newEstudiante.getSerial());
                                         tabletasGraficas.add(newTableta_GRAFICA);

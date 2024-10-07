@@ -2,6 +2,9 @@ import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Random;
+
 
 public class Llenado {
 
@@ -46,14 +49,14 @@ public class Llenado {
 
         return new ESTUDIANTE_INGENIERIA(cedula, nombre, apellido, telefono, numeroDelSemestreActual, promedioAcumulado, serial);
     }
-    public ESTUDIANTE_DISENO llenarDiseno() throws IOException{
+    public ESTUDIANTE_DISENO llenarDiseno(int serialDiseno) throws IOException{
         String cedula;
         String nombre;
         String apellido;
         String telefono;
         String modalidad;
         int cantidadAsignaturas;
-        int serial;
+        int serial = serialDiseno;
 
         System.out.println("Ingrese la cedula: ");
         cedula =  validar.eleccionAValidar(3,cp.readLine());
@@ -72,8 +75,7 @@ public class Llenado {
         System.out.println("Ingrese la cantidad de asignaturas: ");
         cantidadAsignaturas = Integer.parseInt(validar.eleccionAValidar(1,cp.readLine()));
         
-        System.out.println("Ingrese el numero de serial: ");
-        serial =  Integer.parseInt(validar.eleccionAValidar(1,cp.readLine()));
+        System.out.println("El serial asignado a usted es: " + serial);
 
         return new ESTUDIANTE_DISENO(cedula, nombre, apellido, telefono, modalidad, cantidadAsignaturas, serial);
     }
@@ -126,6 +128,8 @@ public class Llenado {
 
         return new COMPUTADOR_PORTATIL(serial, marca, tamano, precio, sistemaOperativo, procesador);
     }
+    //  Método para seleccion la modalidad de estudio
+
     public String opcionEstudio()throws IOException{
         System.out.println("Ingrese \"1\" si el estudiante estudia de manera Virtual o \"2\" si estudia de manera Presencial: ");
         int opcion = Integer.parseInt(validar.eleccionAValidarSinSobrepasar(1, cp.readLine(),2));
@@ -141,6 +145,7 @@ public class Llenado {
         }
         return "Gracias por su elección";
     }
+    // Método para selecion de almacenamiento de la tableta grafica
 
     public String opcionAlmacenamiento()throws IOException{
         System.out.println("Ingrese 1 si desea un almacenamiento de 256 GB: \n Ingrese 2 si desea un almacenamiento de 512 GB: \n Ingrese 3 si desea un almacenamiento de 1 TB: ");
@@ -161,6 +166,7 @@ public class Llenado {
         }
         return "Gracias por su elección";
     }
+    // Método para selecionar el sistema operativo del computador portatil
 
     public String opcionSistemaOperativo()throws IOException{
         System.out.println("Ingrese 1 si desea el sistema operativo Windows 7: \n Ingrese 2 si desea el sistema operativo Windows 10: \n Ingrese 3 si desea el sistema operativo Windows 11: ");
@@ -181,7 +187,7 @@ public class Llenado {
         }
         return "Gracias por su elección";
     }
-
+    // Método para seleccionar el tipo de procesador del computador portatil
     public String opcionProcesador()throws IOException{
         System.out.println("Ingrese 1 si desea el procesador AMD Ryzen: \n Ingrese 2 si desea el procesadaor Intel® Core™ i5: ");
         int opcion = Integer.parseInt(validar.eleccionAValidarSinSobrepasar(1, cp.readLine(),2));
@@ -196,5 +202,20 @@ public class Llenado {
             opcionProcesador();
         }
         return "Gracias por su elección";
+    }
+    // Método para crear el serial de números enteros de estudiantes de diseño
+    public int serialEnteros(LinkedList<Integer> serialesDiseno){
+        String serial = "0";
+        Random random = new Random();
+        for (int i = 0; i < 5; i++) {
+             serial += String.valueOf(random.nextInt(9-1) +1);     
+        }
+        for (Integer serialLista : serialesDiseno) { 
+            if (Integer.parseInt(serial) == serialLista) {
+                serial = String.valueOf(serialEnteros(serialesDiseno));
+                break;
+            }
+        }
+        return Integer.parseInt(serial);
     }
 }
