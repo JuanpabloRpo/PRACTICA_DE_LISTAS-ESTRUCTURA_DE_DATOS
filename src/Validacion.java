@@ -4,8 +4,6 @@ import java.io.InputStreamReader;
 
 public class Validacion {
 
-
-
     public Validacion() {
     }
 
@@ -150,6 +148,22 @@ public class Validacion {
                 cadena = eleccionAValidar(opcionNueva,cadena);
 
         }
+        return cadena;
+    }
+
+    public String eleccionAValidarSinSobrepasar(int opcion, String cadena,int noSobrepasar) throws IOException {
+        BufferedReader cp=new BufferedReader(new InputStreamReader(System.in));
+
+        int IsTrue;
+        IsTrue = Integer.parseInt(eleccionAValidar(opcion,cadena));
+
+        while (IsTrue>noSobrepasar){
+            System.out.println("El dato no debe sobre pasar el numero "+noSobrepasar);
+            System.out.println("ingrese el dato nuevamente: ");
+            cadena=cp.readLine();
+            IsTrue = Integer.parseInt(eleccionAValidar(opcion,cadena ));
+        }
+
         return cadena;
     }
 
