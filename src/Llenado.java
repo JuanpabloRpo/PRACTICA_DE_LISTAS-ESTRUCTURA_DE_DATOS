@@ -43,6 +43,40 @@ public class Llenado {
 
         return new ESTUDIANTE_INGENIERIA(cedula, nombre, apellido, telefono, numeroDelSemestreActual, promedioAcumulado, serial);
     }
+    public ESTUDIANTE_DISENO llenarDiseno() throws IOException{
+        String cedula = "";
+        String nombre = "";
+        String apellido = "";
+        String telefono = "";
+        String modalidad = "";
+        int cantidadAsignaturas = 0;
+        int serial = 0;
+
+        System.out.println("Ingrese la cedula: ");
+        cedula =  validar.eleccionAValidar(3,cp.readLine());
+       
+        System.out.println("Ingrese el nombre: ");
+        nombre = validar.eleccionAValidar(4,cp.readLine());
+        
+        System.out.println("Ingrese el apellido: ");
+        apellido = validar.eleccionAValidar(4,cp.readLine());
+ 
+        System.out.println("Ingrese el telefono: ");
+        telefono =  validar.eleccionAValidar(3,cp.readLine());
+
+        System.out.println("Ingrese si el estudiante estudia de manera \"virtual\" o \"presencial\": ");
+        modalidad = validar.eleccionAValidar(4,cp.readLine());
+
+        System.out.println("Ingrese la cantidad de asignaturas: ");
+        cantidadAsignaturas = Integer.parseInt(validar.eleccionAValidar(1,cp.readLine()));
+        
+        System.out.println("Ingrese el numero de serial: ");
+        serial =  Integer.parseInt(validar.eleccionAValidar(1,cp.readLine()));
+
+        return new ESTUDIANTE_DISENO(cedula, nombre, apellido, telefono, modalidad, cantidadAsignaturas, serial);
+
+    }
+    
 
     public COMPUTADOR_PORTATIL llenarComputador(String newSerial){
 
