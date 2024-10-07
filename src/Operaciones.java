@@ -88,7 +88,6 @@ public class Operaciones {
                             if (validar.isInt(opcionIngenieria)){
                                 switch (opcionIngenieria){
                                     case "1":
-                                        System.out.println("null");
 
                                         ESTUDIANTE_INGENIERIA newEstudiante = llenar.llenarIngeniero();
                                         estudiantesIngenieria.add(newEstudiante);
@@ -134,13 +133,17 @@ public class Operaciones {
                             System.out.println("Digite 4 para Buscar equipo .");
                             System.out.println("Digite 5 para Volver al menú principal.");
 
-                            String opcionIngenieria= cp.readLine();
+                            String opcionDiseno= cp.readLine();
 
                             // se valida que sea un entero
-                            if (validar.isInt(opcionIngenieria)){
-                                switch (opcionIngenieria){
+                            if (validar.isInt(opcionDiseno)){
+                                switch (opcionDiseno){
                                     case "1":
-                                        System.out.println("null");
+                                        ESTUDIANTE_DISENO newEstudiante = llenar.llenarDiseno();
+                                        estudiantesDiseno.add(newEstudiante);
+
+                                        TABLETA_GRAFICA newTableta_GRAFICA = llenar.llenarTableta_GRAFICA(newEstudiante.getSerial());
+                                        tabletasGraficas.add(newTableta_GRAFICA);
 
                                         break;
                                     case "2":

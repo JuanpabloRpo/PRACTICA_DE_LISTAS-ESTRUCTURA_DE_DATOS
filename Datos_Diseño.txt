@@ -30,3 +30,11 @@ Modalidad de estudio: virtual
 cantidad de asignaturas: 4
 Serial: 11345
 -----------------------------
+Cedula: 1025882653
+Nombre: christian
+Apellido: copete
+Telefono: 3103918253
+Modalidad de estudio: virtual
+cantidad de asignaturas: 5
+Serial: 123124214
+-----------------------------

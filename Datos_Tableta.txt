@@ -26,3 +26,10 @@ precio: 19.5
 almacenamiento: 45
 peso: 12.0
 -----------------------------
+serial: 123124214
+marca: pepito
+tamaño: 34.5
+precio: 2345.0
+almacenamiento: 1 TB
+peso: 24.5
+-----------------------------

@@ -30,3 +30,11 @@ Semestre actual: 7
 Promedio acumulado: 3.5
 Serial: 654kk
 -----------------------------
+Cedula: 102588265
+Nombre: christian
+Apellido: copete
+Telefono: 3103918253
+Semestre actual: 6
+Promedio acumulado: 4.3
+Serial: safasfas12421
+-----------------------------
