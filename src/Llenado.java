@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -16,14 +15,14 @@ public class Llenado {
 
     }
 
-    public ESTUDIANTE_INGENIERIA llenarIngeniero() throws IOException {
+    public ESTUDIANTE_INGENIERIA llenarIngeniero(String serialIngeniero) throws IOException {
         String cedula;
         String nombre;
         String apellido;
         String telefono;
         int numeroDelSemestreActual;
         double promedioAcumulado;
-        String serial;
+        
 
         System.out.println("Ingrese la cedula: ");
         cedula =  validar.eleccionAValidar(3,cp.readLine());
@@ -43,11 +42,9 @@ public class Llenado {
         System.out.println("Ingrese el promedio acumulado: ");
         promedioAcumulado = Double.parseDouble(validar.eleccionAValidarSinSobrepasar(2,cp.readLine() ,5));
         
-        
-        System.out.println("Ingrese el numero de serial: ");
-        serial =  validar.eleccionAValidar(3,cp.readLine());
+        System.out.println("El serial generado aleatoriamente es: "+serialIngeniero);
 
-        return new ESTUDIANTE_INGENIERIA(cedula, nombre, apellido, telefono, numeroDelSemestreActual, promedioAcumulado, serial);
+        return new ESTUDIANTE_INGENIERIA(cedula, nombre, apellido, telefono, numeroDelSemestreActual, promedioAcumulado, serialIngeniero);
     }
     public ESTUDIANTE_DISENO llenarDiseno(int serialDiseno) throws IOException{
         String cedula;
@@ -217,5 +214,38 @@ public class Llenado {
             }
         }
         return Integer.parseInt(serial);
+    }
+    //Metodo para crear el serial de tipo String  de estudiantes de ingenieria
+    public String serialStrings(LinkedList<String> serialesIngenieria){
+        String serial = "0";
+        Random random = new Random();
+        for (int i = 0; i < 5; i++) {
+            if(random.nextInt(1,3)==1){
+                serial +=enteroAleatorio();
+            }else{
+                serial += Character.toString(letraAleatoria(random.nextInt(1,3)));
+            }
+               
+       }
+
+        return serial;   
+    }
+
+    // Metodo para generar un numero aleatorio
+    public String enteroAleatorio(){
+
+        Random random = new Random();
+        return String.valueOf(random.nextInt(10));
+
+    }
+
+    // Metodo para generar una letra mayuscula o minuscula aleatoria
+    public int letraAleatoria(int opcion){
+        Random random = new Random();
+        if (opcion==1){
+            return random.nextInt(97,123);
+        }else{
+            return random.nextInt(65,91);
+        }
     }
 }

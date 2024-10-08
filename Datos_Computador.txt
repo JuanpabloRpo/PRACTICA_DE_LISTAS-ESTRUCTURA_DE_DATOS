@@ -26,3 +26,10 @@ precio: 30.9
 sistema Operativo: windows
 procesador: AMD
 -----------------------------
+serial: 0j5D83
+marca: asd
+tamaño: 687.0
+precio: 687.0
+sistema Operativo: Window 7
+procesador: AMD Ryzen
+-----------------------------

@@ -53,6 +53,7 @@ public class Operaciones {
         LinkedList<COMPUTADOR_PORTATIL> computadoresPortatiles = computadoresPortatilesGlobal;
         LinkedList<Integer> serialDiseno = serialDisenoGlobal;
         LinkedList<String> serialIngenieria = serialIngenieriaGlobal;
+        
         Validacion validar=new Validacion();
         Llenado llenar=new Llenado();
         String lineas="--------------------------------------------";
@@ -92,11 +93,13 @@ public class Operaciones {
                                 switch (opcionIngenieria){
                                     case "1":
 
-                                        ESTUDIANTE_INGENIERIA newEstudiante = llenar.llenarIngeniero();
+                                        ESTUDIANTE_INGENIERIA newEstudiante = llenar.llenarIngeniero(llenar.serialStrings(serialIngenieria));
                                         estudiantesIngenieria.add(newEstudiante);
+                                        serialIngenieria.add(newEstudiante.getSerial());
 
                                         COMPUTADOR_PORTATIL newComputador=llenar.llenarComputador(newEstudiante.getSerial());
                                         computadoresPortatiles.add(newComputador);
+                                        
 
                                         break;
                                     case "2":
@@ -144,7 +147,7 @@ public class Operaciones {
                                     case "1":
                                         ESTUDIANTE_DISENO newEstudiante = llenar.llenarDiseno(llenar.serialEnteros(serialDiseno));
                                         estudiantesDiseno.add(newEstudiante);
-                                        
+                                        serialDiseno.add(newEstudiante.getSerial());
 
                                         TABLETA_GRAFICA newTableta_GRAFICA = llenar.llenarTableta_GRAFICA(newEstudiante.getSerial());
                                         tabletasGraficas.add(newTableta_GRAFICA);

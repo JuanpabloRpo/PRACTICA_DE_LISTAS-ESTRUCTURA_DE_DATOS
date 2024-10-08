@@ -38,3 +38,11 @@ Semestre actual: 6
 Promedio acumulado: 4.3
 Serial: safasfas12421
 -----------------------------
+Cedula: 354
+Nombre: Pepe
+Apellido: juas
+Telefono: 354
+Semestre actual: 27687
+Promedio acumulado: 4.1
+Serial: 0j5D83
+-----------------------------
