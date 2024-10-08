@@ -239,4 +239,66 @@ public class Importar {
         return Dispositivos;
     }
 
+    public LinkedList<String> importarArchivoSrialIngenieros(){
+
+        String rutaArchivo = "Datos_Serial_Ingeniero.txt";
+        File archivo = new File(rutaArchivo);
+        if (!archivo.exists()) {
+            return null;
+        }
+
+        LinkedList<String> serialIngenieros = new LinkedList<>();
+        String line;
+        String serial="";
+
+        try (BufferedReader cp = new BufferedReader(new FileReader(rutaArchivo))){
+            while ((line = cp.readLine()) != null){
+
+                if (line.startsWith("serial: ")){
+                    serial=line.substring(8);
+                    continue;
+                }
+
+                serialIngenieros.add(serial);
+            }
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        return serialIngenieros;
+    }
+
+    public LinkedList<Integer> importarArchivoSerialDiseno(){
+
+        String rutaArchivo = "Datos_Serial_Diseño.txt";
+        File archivo = new File(rutaArchivo);
+        if (!archivo.exists()) {
+            return null;
+        }
+
+        LinkedList<Integer> serialDiseno = new LinkedList<>();
+        String line;
+        String serial="";
+
+        try (BufferedReader cp = new BufferedReader(new FileReader(rutaArchivo))){
+            while ((line = cp.readLine()) != null){
+
+                if (line.startsWith("serial: ")){
+                    serial=line.substring(8);
+                    continue;
+                }
+
+                serialDiseno.add(Integer.parseInt(serial));
+            }
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        return serialDiseno;
+    }
+
 }

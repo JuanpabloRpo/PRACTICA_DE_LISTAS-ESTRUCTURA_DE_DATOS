@@ -15,7 +15,7 @@ public class Operaciones {
         Importar importar=new Importar();
 
         String lineas="--------------------------------------------";
-
+        System.out.println(lineas);
         // se importa y se verifica que haya datos sobre los estudiantes de ingenieria
         LinkedList<ESTUDIANTE_INGENIERIA> verificar = importar.importarArchivoIngnieria();
         if (verificar!=null){
@@ -40,7 +40,15 @@ public class Operaciones {
             computadoresPortatilesGlobal=verificar4;
         }
 
+        LinkedList<String> verificar5 = importar.importarArchivoSrialIngenieros();
+        if (verificar5!=null){
+            serialIngenieriaGlobal=verificar5;
+        }
 
+        LinkedList<Integer> verificar6 = importar.importarArchivoSerialDiseno();
+        if (verificar6!=null){
+            serialDisenoGlobal=verificar6;
+        }
     }
 
     public void menu() throws IOException{
@@ -99,16 +107,18 @@ public class Operaciones {
 
                                         COMPUTADOR_PORTATIL newComputador=llenar.llenarComputador(newEstudiante.getSerial());
                                         computadoresPortatiles.add(newComputador);
-                                        
 
+                                        exportarIngenieros(estudiantesIngenieria,computadoresPortatiles,serialIngenieria);
                                         break;
                                     case "2":
                                         System.out.println("null");
 
+                                        exportarIngenieros(estudiantesIngenieria,computadoresPortatiles,serialIngenieria);
                                         break;
                                     case "3":
                                         System.out.println("null");
 
+                                        exportarIngenieros(estudiantesIngenieria,computadoresPortatiles,serialIngenieria);
                                         break;
                                     case "4":
                                         System.out.println("null");
@@ -152,14 +162,19 @@ public class Operaciones {
                                         TABLETA_GRAFICA newTableta_GRAFICA = llenar.llenarTableta_GRAFICA(newEstudiante.getSerial());
                                         tabletasGraficas.add(newTableta_GRAFICA);
 
+                                        exportarDisenadores(estudiantesDiseno,tabletasGraficas,serialDiseno);
                                         break;
                                     case "2":
                                         System.out.println("null");
 
+
+                                        exportarDisenadores(estudiantesDiseno,tabletasGraficas,serialDiseno);
                                         break;
                                     case "3":
                                         System.out.println("null");
 
+
+                                        exportarDisenadores(estudiantesDiseno,tabletasGraficas,serialDiseno);
                                         break;
                                     case "4":
 
@@ -181,8 +196,8 @@ public class Operaciones {
                         System.out.println("Mantenimiento");
                         break;
                     case "4":
-                        exportarEstudiantes(estudiantesIngenieria,estudiantesDiseno);
-                        exportarDispositivos(tabletasGraficas,computadoresPortatiles);
+                        exportarIngenieros(estudiantesIngenieria,computadoresPortatiles,serialIngenieria);
+                        exportarDisenadores(estudiantesDiseno,tabletasGraficas,serialDiseno);
                         flagMenu=false;
                         break;
                     default:
@@ -197,21 +212,25 @@ public class Operaciones {
 
 
     // ultimo metodo
-    // Metodo para exportar los estudiantes ingresados
-    private void exportarEstudiantes(LinkedList<ESTUDIANTE_INGENIERIA> estudiantesIngenieria,LinkedList<ESTUDIANTE_DISENO> estudiantesDiseno){
+    // Metodo para exportar los estudiantes De ingenieria
+    private void exportarIngenieros(LinkedList<ESTUDIANTE_INGENIERIA> estudiantesIngenieria, LinkedList<COMPUTADOR_PORTATIL> computadoresPortatiles, LinkedList<String> serialIngenieria){
+
         Exportar exportar=new Exportar();
-
         exportar.exportarARchivoIngenieria(estudiantesIngenieria);
-        exportar.exportarARchivoDiseno(estudiantesDiseno);
-
+        exportar.exportarARchivoComputador(computadoresPortatiles);
+        exportar.exportarARchivoSerialIngeniero(serialIngenieria);
 
     }
 
-    // Metodo para exportar los dispositivos
-    private void exportarDispositivos(LinkedList<TABLETA_GRAFICA> tabletasGraficas,LinkedList<COMPUTADOR_PORTATIL> computadoresPortatiles){
+    // Metodo para exportar los estudiantes De Diseño
+    private void exportarDisenadores(LinkedList<ESTUDIANTE_DISENO> estudiantesDiseno, LinkedList<TABLETA_GRAFICA> tabletasGraficas, LinkedList<Integer> serialDiseno){
+
         Exportar exportar=new Exportar();
+
+        exportar.exportarARchivoDiseno(estudiantesDiseno);
         exportar.exportarARchivoTableta(tabletasGraficas);
-        exportar.exportarARchivoComputador(computadoresPortatiles);
+        exportar.exportarARchivoSerialDiseno(serialDiseno);
+
     }
 
 

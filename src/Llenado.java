@@ -22,7 +22,6 @@ public class Llenado {
         String telefono;
         int numeroDelSemestreActual;
         double promedioAcumulado;
-        
 
         System.out.println("Ingrese la cedula: ");
         cedula =  validar.eleccionAValidar(3,cp.readLine());
@@ -34,10 +33,10 @@ public class Llenado {
         apellido = validar.eleccionAValidar(5,cp.readLine());
 
         System.out.println("Ingrese el telefono: ");
-        telefono =  validar.eleccionAValidar(3,cp.readLine());
+        telefono =  validar.eleccionAValidar(1,cp.readLine());
        
         System.out.println("Ingrese el numero del semestre actual: ");
-        numeroDelSemestreActual = Integer.parseInt(validar.eleccionAValidar(1,cp.readLine()));
+        numeroDelSemestreActual = Integer.parseInt(validar.eleccionAValidarSinSobrepasar(1,cp.readLine(),10));
         
         System.out.println("Ingrese el promedio acumulado: ");
         promedioAcumulado = Double.parseDouble(validar.eleccionAValidarSinSobrepasar(2,cp.readLine() ,5));
@@ -53,16 +52,15 @@ public class Llenado {
         String telefono;
         String modalidad;
         int cantidadAsignaturas;
-        int serial = serialDiseno;
 
         System.out.println("Ingrese la cedula: ");
         cedula =  validar.eleccionAValidar(3,cp.readLine());
        
         System.out.println("Ingrese el nombre: ");
-        nombre = validar.eleccionAValidar(4,cp.readLine());
+        nombre = validar.eleccionAValidar(5,cp.readLine());
         
         System.out.println("Ingrese el apellido: ");
-        apellido = validar.eleccionAValidar(4,cp.readLine());
+        apellido = validar.eleccionAValidar(5,cp.readLine());
  
         System.out.println("Ingrese el telefono: ");
         telefono =  validar.eleccionAValidar(1,cp.readLine());
@@ -70,20 +68,20 @@ public class Llenado {
         modalidad = opcionEstudio();
 
         System.out.println("Ingrese la cantidad de asignaturas: ");
-        cantidadAsignaturas = Integer.parseInt(validar.eleccionAValidar(1,cp.readLine()));
+        cantidadAsignaturas = Integer.parseInt(validar.eleccionAValidarSinSobrepasar(1,cp.readLine(),7));
         
-        System.out.println("El serial asignado a usted es: " + serial);
+        System.out.println("El serial asignado a usted es: " + serialDiseno);
 
-        return new ESTUDIANTE_DISENO(cedula, nombre, apellido, telefono, modalidad, cantidadAsignaturas, serial);
+        return new ESTUDIANTE_DISENO(cedula, nombre, apellido, telefono, modalidad, cantidadAsignaturas, serialDiseno);
     }
     public TABLETA_GRAFICA llenarTableta_GRAFICA(int newSerial)throws IOException{
 
         String serial = String.valueOf(newSerial);
-        String marca = "";
-        double tamano = 0;
-        double precio = 0;
-        String almacenamiento = "";
-        Double peso = 0.0;
+        String marca;
+        double tamano;
+        double precio;
+        String almacenamiento;
+        double peso;
 
         System.out.println("Ingrese la marca de la tableta gráfica: ");
         marca = validar.eleccionAValidar(4, cp.readLine());
@@ -104,12 +102,11 @@ public class Llenado {
 
     public COMPUTADOR_PORTATIL llenarComputador(String newSerial)throws IOException{
 
-        String serial = newSerial;
-        String marca = "";
-        double tamano = 0.0;
-        double precio = 0.0;
-        String sistemaOperativo = "";
-        String procesador = "";
+        String marca;
+        double tamano;
+        double precio;
+        String sistemaOperativo;
+        String procesador;
 
         System.out.println("Ingrese la marca del computador portatil: ");
         marca = validar.eleccionAValidar(4, cp.readLine());
@@ -123,7 +120,7 @@ public class Llenado {
         sistemaOperativo = opcionSistemaOperativo();
         procesador = opcionProcesador();
 
-        return new COMPUTADOR_PORTATIL(serial, marca, tamano, precio, sistemaOperativo, procesador);
+        return new COMPUTADOR_PORTATIL(newSerial, marca, tamano, precio, sistemaOperativo, procesador);
     }
     //  Método para seleccion la modalidad de estudio
 
@@ -200,6 +197,7 @@ public class Llenado {
         }
         return "Gracias por su elección";
     }
+
     // Método para crear el serial de números enteros de estudiantes de diseño
     public int serialEnteros(LinkedList<Integer> serialesDiseno){
         String serial = "0";
@@ -207,15 +205,18 @@ public class Llenado {
         for (int i = 0; i < 5; i++) {
              serial += String.valueOf(random.nextInt(9-1) +1);     
         }
-        for (Integer serialLista : serialesDiseno) { 
+
+        for (Integer serialLista : serialesDiseno) {
             if (Integer.parseInt(serial) == serialLista) {
                 serial = String.valueOf(serialEnteros(serialesDiseno));
                 break;
             }
         }
+
         return Integer.parseInt(serial);
     }
-    //Metodo para crear el serial de tipo String  de estudiantes de ingenieria
+
+    // Metodo para crear el serial de tipo String  de estudiantes de ingenieria
     public String serialStrings(LinkedList<String> serialesIngenieria){
         String serial = "0";
         Random random = new Random();
@@ -227,6 +228,16 @@ public class Llenado {
             }
                
        }
+
+
+        for (String serialLista : serialesIngenieria) {
+            if (serial.equals(serialLista)) {
+                serial = String.valueOf(serialStrings(serialesIngenieria));
+                break;
+            }
+        }
+
+
 
         return serial;   
     }
@@ -248,4 +259,5 @@ public class Llenado {
             return random.nextInt(65,91);
         }
     }
+
 }

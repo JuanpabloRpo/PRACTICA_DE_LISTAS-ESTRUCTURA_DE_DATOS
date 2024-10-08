@@ -20,7 +20,7 @@ public class Validacion {
                 return false;
             }
 
-            // verificamos que sea entero y positivo
+            // verificamos que sea entero
             if ((newDato>(int)newDato) && (newDato<(int)newDato+1)){
                 return false;
             }
@@ -103,9 +103,10 @@ public class Validacion {
                 // para saber si es un numero entero
                 IsTrue = isInt(cadena);
                 while (!IsTrue){
-                    System.out.println(cadena+" No es un entero positivo, Digite nuevamente: ");
-                    cadena= cp.readLine();
-                    IsTrue=isInt(cadena);
+                        System.out.println(cadena+" No es un entero positivo, Digite nuevamente: ");
+                        cadena = cp.readLine();
+                        IsTrue=isInt(cadena);
+
                 }
                 return cadena;
             case 2:
@@ -135,11 +136,15 @@ public class Validacion {
                 return cadena;
             case 5:
                 IsTrue = forFullName(cadena);
+                if (cadena.equals(Character.toString(32))){
+
+                }
                 while (!IsTrue){
                     System.out.println(cadena + " Contiene caracteres especiales ó numeros, Digite nuevamente: ");
-                    cadena= cp.readLine();
-                    IsTrue=forFullName(cadena);
+                    cadena = cp.readLine();
+                    IsTrue = forFullName(cadena);
                 }
+
                 return cadena;
             default:
                 System.out.println("Mijo caso incorrecto utilice bien las cosas, digite el caso manual nuevamente: ");
@@ -151,7 +156,9 @@ public class Validacion {
         return cadena;
     }
 
+    //
     public String eleccionAValidarSinSobrepasar(int opcion, String cadena,int noSobrepasar) throws IOException {
+
         BufferedReader cp=new BufferedReader(new InputStreamReader(System.in));
 
         double IsTrue;
@@ -164,7 +171,12 @@ public class Validacion {
             IsTrue = Double.parseDouble(eleccionAValidar(opcion,cadena ));
         }
 
-        return cadena;
+        if (isInt(String.valueOf(IsTrue))){
+            return String.valueOf((int)IsTrue);
+        }else {
+            return String.valueOf(IsTrue);
+        }
+
     }
 
 }

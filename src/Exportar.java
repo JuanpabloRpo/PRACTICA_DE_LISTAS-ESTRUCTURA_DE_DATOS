@@ -10,9 +10,7 @@ public class Exportar {
 
     public void exportarARchivoIngenieria(LinkedList<ESTUDIANTE_INGENIERIA> listaDeEstudiantes){
 
-        if (listaDeEstudiantes.isEmpty()){
-            System.out.println("\nLista vacia, por favor ingrese los datos\n");
-        }else {
+        if (!listaDeEstudiantes.isEmpty()){
             try (FileWriter archivo = new FileWriter("Datos_Ingenieria.txt")){
 //                archivo.write("\n--- ESTUDIANTES DE INGENIERIA ---\n");
                 for (ESTUDIANTE_INGENIERIA estudiante: listaDeEstudiantes){
@@ -35,9 +33,7 @@ public class Exportar {
 
     public void exportarARchivoDiseno(LinkedList<ESTUDIANTE_DISENO> listaDeEstudiantes){
 
-        if (listaDeEstudiantes.isEmpty()){
-            System.out.println("\nLista vacia, por favor ingrese los datos\n");
-        }else {
+        if (!listaDeEstudiantes.isEmpty()){
             try (FileWriter archivo = new FileWriter("Datos_Diseño.txt")){
 //                archivo.write("\n--- ESTUDIANTES DE DISEÑO ---\n");
                 for (ESTUDIANTE_DISENO estudiante: listaDeEstudiantes){
@@ -59,9 +55,7 @@ public class Exportar {
 
     public void exportarARchivoComputador(LinkedList<COMPUTADOR_PORTATIL> listaDeDispositivos){
 
-        if (listaDeDispositivos.isEmpty()){
-            System.out.println("\nLista vacia, por favor ingrese los datos\n");
-        }else {
+        if (!listaDeDispositivos.isEmpty()){
             try (FileWriter archivo = new FileWriter("Datos_Computador.txt")){
 //                archivo.write("\n--- COMPUTADORES ---\n");
                 for (COMPUTADOR_PORTATIL dispositivo: listaDeDispositivos){
@@ -82,9 +76,7 @@ public class Exportar {
 
     public void exportarARchivoTableta(LinkedList<TABLETA_GRAFICA> listaDeDispositivos){
 
-        if (listaDeDispositivos.isEmpty()){
-            System.out.println("\nLista vacia, por favor ingrese los datos\n");
-        }else {
+        if (!listaDeDispositivos.isEmpty()){
             try (FileWriter archivo = new FileWriter("Datos_Tableta.txt")){
 //                archivo.write("\n--- Tabletas ---\n");
                 for (TABLETA_GRAFICA dispositivo: listaDeDispositivos){
@@ -103,4 +95,36 @@ public class Exportar {
         }
     }
 
+    public void exportarARchivoSerialIngeniero(LinkedList<String> listaDeSerial){
+
+        if (!listaDeSerial.isEmpty()){
+
+            try (FileWriter archivo = new FileWriter("Datos_Serial_Ingeniero.txt")){
+//                archivo.write("\n--- Serial Ingeniero ---\n");
+                for (String serial: listaDeSerial){
+                    archivo.write("serial: "+serial+ "\n");
+                    archivo.write("-----------------------------"+ "\n");
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void exportarARchivoSerialDiseno(LinkedList<Integer> listaDeSerial){
+
+        if (!listaDeSerial.isEmpty()){
+            try (FileWriter archivo = new FileWriter("Datos_Serial_Diseño.txt")){
+//                archivo.write("\n--- Serial Diseño ---\n");
+                for (Integer serial: listaDeSerial){
+                    archivo.write("serial: "+serial+ "\n");
+                    archivo.write("-----------------------------"+ "\n");
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
