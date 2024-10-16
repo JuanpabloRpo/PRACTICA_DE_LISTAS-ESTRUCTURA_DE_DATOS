@@ -9,7 +9,6 @@ public class Llenado {
 
     public BufferedReader cp = new BufferedReader(new InputStreamReader(System.in));
     public Validacion validar = new Validacion();
-    
 
     public Llenado() {
 
@@ -24,7 +23,7 @@ public class Llenado {
         double promedioAcumulado;
 
         System.out.println("Ingrese la cedula: ");
-        cedula =  validar.eleccionAValidar(3,cp.readLine());
+        cedula =  validar.eleccionAValidar(6,cp.readLine());
        
         System.out.println("Ingrese el nombre: ");
         nombre = validar.eleccionAValidar(5,cp.readLine());
@@ -54,7 +53,7 @@ public class Llenado {
         int cantidadAsignaturas;
 
         System.out.println("Ingrese la cedula: ");
-        cedula =  validar.eleccionAValidar(3,cp.readLine());
+        cedula =  validar.eleccionAValidar(6,cp.readLine());
        
         System.out.println("Ingrese el nombre: ");
         nombre = validar.eleccionAValidar(5,cp.readLine());

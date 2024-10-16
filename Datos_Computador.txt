@@ -1,0 +1,7 @@
+serial: 0FT91Y
+marca: asus
+tamaño: 78.0
+precio: 78.0
+sistema Operativo: Window 7
+procesador: AMD Ryzen
+-----------------------------

@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.LinkedList;
 
 public class Validacion {
 
@@ -85,7 +86,8 @@ public class Validacion {
 
         for (char carater: cadena.toCharArray()){
             ascii= carater;
-            if ((( ascii > 0 ) && ( ascii < 32 )) || (( ascii > 32 ) && ( ascii < 65 )) || (( ascii > 90 ) && ( ascii < 97 )) || ((ascii > 122) && (ascii<130)) || ((ascii>130) && (ascii<160)) || (ascii>165) ){
+
+            if ( ((ascii>0) && (ascii<32)) || ((ascii>32) && (ascii<65)) || ((ascii>90) && (ascii<97)) || ((ascii>122))){
                 return false;
             }
         }
@@ -133,12 +135,11 @@ public class Validacion {
                     cadena= cp.readLine();
                     IsTrue=withOutSpecialCharacterAndNumbers(cadena);
                 }
+
                 return cadena;
             case 5:
                 IsTrue = forFullName(cadena);
-                if (cadena.equals(Character.toString(32))){
 
-                }
                 while (!IsTrue){
                     System.out.println(cadena + " Contiene caracteres especiales ó numeros, Digite nuevamente: ");
                     cadena = cp.readLine();
@@ -146,6 +147,21 @@ public class Validacion {
                 }
 
                 return cadena;
+
+            case 6:
+
+                cadena=eleccionAValidar(3,cadena);
+
+                IsTrue= isCedulaRepeat(cedulasEstudiantes(),cadena);
+
+                while (IsTrue){
+                    System.out.println("La cedula = "+cadena + " ya esta en el sistema, Digite nuevamente: ");
+                    cadena=eleccionAValidar(3, cp.readLine());
+                    IsTrue= isCedulaRepeat(cedulasEstudiantes(),cadena);
+                }
+
+                return cadena;
+
             default:
                 System.out.println("Mijo caso incorrecto utilice bien las cosas, digite el caso manual nuevamente: ");
                 System.out.println("Ya sabe que tiene que corregir la opcion del metodo no hay una opcion "+opcion+" mire bien como utilizar el metodo :)");
@@ -179,4 +195,37 @@ public class Validacion {
 
     }
 
+    public boolean isCedulaRepeat(LinkedList<String> registroCedulas,String cedula){
+
+        for (String cedulaEstudiante: registroCedulas){
+            if(cedula.equals(cedulaEstudiante)){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private LinkedList<String> cedulasEstudiantes(){
+        Importar importar=new Importar();
+
+        LinkedList<String> cedulas=new LinkedList<>();
+
+        LinkedList<ESTUDIANTE_INGENIERIA> lista1= importar.importarArchivoIngnieria();
+        LinkedList<ESTUDIANTE_DISENO> lista2 = importar.importarArchivoDiseno();
+
+        if (lista1!=null){
+            for (ESTUDIANTE_INGENIERIA estudiante : lista1){
+                cedulas.add(estudiante.getCedula());
+            }
+        }
+
+        if (lista2!=null){
+            for (ESTUDIANTE_DISENO estudiante : lista2){
+                cedulas.add(estudiante.getCedula());
+            }
+        }
+
+        return cedulas;
+    }
 }
