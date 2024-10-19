@@ -111,9 +111,16 @@ public class Operaciones {
                                         exportarIngenieros(estudiantesIngenieria,computadoresPortatiles,serialIngenieria);
                                         break;
                                     case "2":
-                                        System.out.println("null");
+                                        Importar importar=new Importar();
 
-                                        exportarIngenieros(estudiantesIngenieria,computadoresPortatiles,serialIngenieria);
+                                        System.out.println("ingrese la cedula o el serial a modifcar: ");
+
+                                        estudiantesIngenieria=modificarEstudiante(estudiantesIngenieria,validar.eleccionAValidar(3, cp.readLine()),serialIngenieria,computadoresPortatiles);
+
+                                        serialIngenieria = importar.importarArchivoSrialIngenieros();
+                                        computadoresPortatiles = importar.importarArchivoComputador();
+
+                                        exportarI(estudiantesIngenieria);
                                         break;
                                     case "3":
                                         System.out.println("null");
@@ -210,16 +217,75 @@ public class Operaciones {
     }
     // empiecen de aqui para abajo
 
+    public LinkedList<ESTUDIANTE_INGENIERIA> modificarEstudiante (LinkedList<ESTUDIANTE_INGENIERIA> estudiantesIngenieria,String buscar, LinkedList<String> serialIngenieria, LinkedList<COMPUTADOR_PORTATIL> computadoresPortatiles ) throws IOException{
+
+        Llenado llenar=new Llenado();
+        boolean Ishere=false;
+
+        for(ESTUDIANTE_INGENIERIA estudiante:estudiantesIngenieria){
+            if (estudiante.getSerial().equals(buscar) || estudiante.getCedula().equals(buscar)){
+
+                String serialAnterior=estudiante.getSerial();
+                estudiante.setSerial(llenar.serialStrings(serialIngenieria));
+
+                for (COMPUTADOR_PORTATIL computador :computadoresPortatiles){
+
+                    if (computador.getSerial().equals(serialAnterior)){
+                        computadoresPortatiles.remove(computador);
+
+                        computadoresPortatiles.add(llenar.llenarComputador(estudiante.getSerial()));
+                        break;
+                    }
+
+                }
+
+                for (String serial:serialIngenieria){
+
+                    if (serial.equals(serialAnterior)){
+
+                        serialIngenieria.remove(serialAnterior);
+                        serialIngenieria.add(estudiante.getSerial());
+                        break;
+
+                    }
+                }
+                Ishere=true;
+                break;
+            }
+
+        }
+
+        if (Ishere){
+            exportarC(computadoresPortatiles);
+            exportarS(serialIngenieria);
+        }else {
+            System.out.println("No se encontro la cedula o el serial en la base de datos.");
+        }
+
+        return estudiantesIngenieria;
+    }
 
     // ultimo metodo
     // Metodo para exportar los estudiantes De ingenieria
     private void exportarIngenieros(LinkedList<ESTUDIANTE_INGENIERIA> estudiantesIngenieria, LinkedList<COMPUTADOR_PORTATIL> computadoresPortatiles, LinkedList<String> serialIngenieria){
 
+        exportarI(estudiantesIngenieria);
+        exportarC(computadoresPortatiles);
+        exportarS(serialIngenieria);
+
+    }
+
+    private void exportarI(LinkedList<ESTUDIANTE_INGENIERIA> estudiantesIngenieria){
         Exportar exportar=new Exportar();
         exportar.exportarARchivoIngenieria(estudiantesIngenieria);
+    }
+    private void exportarC(LinkedList<COMPUTADOR_PORTATIL> computadoresPortatiles){
+        Exportar exportar=new Exportar();
         exportar.exportarARchivoComputador(computadoresPortatiles);
+    }
+    private void exportarS(LinkedList<String> serialIngenieria){
+        Exportar exportar=new Exportar();
         exportar.exportarARchivoSerialIngeniero(serialIngenieria);
-
     }
 
     // Metodo para exportar los estudiantes De Diseño

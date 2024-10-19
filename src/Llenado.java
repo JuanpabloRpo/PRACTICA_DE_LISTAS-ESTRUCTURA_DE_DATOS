@@ -99,7 +99,7 @@ public class Llenado {
         return new TABLETA_GRAFICA(serial, marca, tamano, precio, almacenamiento, peso);
     }
 
-    public COMPUTADOR_PORTATIL llenarComputador(String newSerial)throws IOException{
+    public COMPUTADOR_PORTATIL llenarComputador(String newSerial) throws IOException{
 
         String marca;
         double tamano;

@@ -1,7 +1,7 @@
-serial: 0FT91Y
+serial: 0811d0
 marca: asus
-tamaño: 78.0
-precio: 78.0
-sistema Operativo: Window 7
-procesador: AMD Ryzen
+tamaño: 987.0
+precio: 654.0
+sistema Operativo: Windows 10
+procesador: Intel® Core™ i5
 -----------------------------
