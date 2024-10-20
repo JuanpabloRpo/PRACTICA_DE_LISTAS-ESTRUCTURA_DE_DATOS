@@ -1,7 +1,14 @@
-serial: 0811d0
+serial: 072z0o
 marca: asus
-tamaño: 987.0
-precio: 654.0
-sistema Operativo: Windows 10
+tamaño: 654.0
+precio: 465.0
+sistema Operativo: Windows 11
 procesador: Intel® Core™ i5
+-----------------------------
+serial: 0W0MmL
+marca: oni
+tamaño: 654.0
+precio: 47788.0
+sistema Operativo: Windows 10
+procesador: AMD Ryzen
 -----------------------------

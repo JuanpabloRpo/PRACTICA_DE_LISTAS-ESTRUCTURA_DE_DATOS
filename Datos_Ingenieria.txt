@@ -1,8 +1,16 @@
-Cedula: 777
-Nombre: juan
+Cedula: 477jj
+Nombre: juan 
 Apellido: restrepo
-Telefono: 465789
-Semestre actual: 4
+Telefono: 456188
+Semestre actual: 7
 Promedio acumulado: 4.0
-Serial: 0811d0
+Serial: 072z0o
+-----------------------------
+Cedula: 65457
+Nombre: pedro
+Apellido: rivaldo
+Telefono: 34654987
+Semestre actual: 7
+Promedio acumulado: 4.5
+Serial: 0W0MmL
 -----------------------------

@@ -5,6 +5,7 @@ import java.util.LinkedList;
 
 
 public class Exportar {
+
     public Exportar() {
     }
 
@@ -24,6 +25,12 @@ public class Exportar {
                     archivo.write("-----------------------------"+ "\n");
                 }
                 archivo.write("");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else{
+            try (FileWriter archivo = new FileWriter("Datos_Ingenieria.txt")){
+//                archivo.write("");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -50,6 +57,12 @@ public class Exportar {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }else {
+            try (FileWriter archivo = new FileWriter("Datos_Diseño.txt")){
+//                archivo.write("");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -68,6 +81,12 @@ public class Exportar {
                     archivo.write("-----------------------------"+ "\n");
                 }
                 archivo.write("");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else {
+            try (FileWriter archivo = new FileWriter("Datos_Computador.txt")){
+//                archivo.write("");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -92,6 +111,12 @@ public class Exportar {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }else {
+            try (FileWriter archivo = new FileWriter("Datos_Tableta.txt")){
+//                archivo.write("");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -109,6 +134,12 @@ public class Exportar {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }else {
+            try (FileWriter archivo = new FileWriter("Datos_Serial_Ingeniero.txt")){
+//                archivo.write("");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -122,6 +153,12 @@ public class Exportar {
                     archivo.write("-----------------------------"+ "\n");
                 }
 
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else {
+            try (FileWriter archivo = new FileWriter("Datos_Serial_Diseño.txt")){
+//                archivo.write("");
             } catch (IOException e) {
                 e.printStackTrace();
             }
