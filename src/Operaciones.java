@@ -143,7 +143,8 @@ public class Operaciones {
 
                                         break;
                                     case "4":
-                                        System.out.println("null");
+                                        System.out.println("Ingrese la cedula o serial del prestamo del estudiante a buscar");
+                                        buscarIngenieria(estudiantesIngenieria, computadoresPortatiles,validar.eleccionAValidar(3, cp.readLine()) );
 
                                         break;
                                     case "5":
@@ -347,6 +348,7 @@ public class Operaciones {
         return estudiantesDiseno;
     }
 
+    //metodo devolucion ingenieria
     public ArrayList<Integer> dispositivoIngenieria(String buscar){
 
         Importar importar = new Importar();
@@ -386,7 +388,7 @@ public class Operaciones {
         return datos;
     }
 
-
+    //metodo devolucion diseño
     public ArrayList<Integer> dispositivoDiseno(String buscar){
 
         Importar importar = new Importar();
@@ -426,7 +428,26 @@ public class Operaciones {
         return datos;
     }
 
+    public void buscarIngenieria(LinkedList<ESTUDIANTE_INGENIERIA> estudiantesIngenieria, LinkedList<COMPUTADOR_PORTATIL> computadoresPortatiles, String buscar){
+        boolean isIn=false;
+        for(ESTUDIANTE_INGENIERIA estudiante:estudiantesIngenieria){
+            if (estudiante.getSerial().equals(buscar) || estudiante.getCedula().equals(buscar)){
+                System.out.println("El estudiante: "+ estudiante.getNombre()+" " +estudiante.getApellido());
+                isIn=true;
+                for (COMPUTADOR_PORTATIL computador :computadoresPortatiles){
+                    if (computador.getSerial().equals(estudiante.getSerial())){
+                System.out.println("Tiene un prestamo activo del computador portatil: " + computador.getMarca() + " \ncon un procesador: " + computador.getProcesador() + "\n con un sistema operativo: " + computador.getSistemaOperativo());
+                        break;
+                    }
 
+                }
+                break;
+            }
+        }
+        if (!isIn){
+            System.out.println("El prestamo del estudiante que desea ingresar no se encuentra");
+        }
+    }
     // ultimo metodo
     // Metodo para exportar los estudiantes De ingenieria
     private void exportarIngenieros(LinkedList<ESTUDIANTE_INGENIERIA> estudiantesIngenieria, LinkedList<COMPUTADOR_PORTATIL> computadoresPortatiles, LinkedList<String> serialIngenieria){

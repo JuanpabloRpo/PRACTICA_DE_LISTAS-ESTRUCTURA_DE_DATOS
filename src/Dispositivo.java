@@ -3,6 +3,7 @@ public class Dispositivo {
     private String marca;
     private double tamano;
     private double precio;
+    private boolean disponible=false;
 
     public Dispositivo(String serial, String marca, double tamano, double precio) {
         this.serial = serial;
@@ -42,4 +43,14 @@ public class Dispositivo {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
+
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
+
+    
 }

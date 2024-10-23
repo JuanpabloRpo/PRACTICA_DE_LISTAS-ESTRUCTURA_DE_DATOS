@@ -14,3 +14,19 @@ Semestre actual: 7
 Promedio acumulado: 4.5
 Serial: 0W0MmL
 -----------------------------
+Cedula: 1025882653
+Nombre: christian
+Apellido: copete
+Telefono: 3103918253
+Semestre actual: 6
+Promedio acumulado: 4.0
+Serial: 0oJ2M4
+-----------------------------
+Cedula: 1127582332
+Nombre: david
+Apellido: molina
+Telefono: 3192808410
+Semestre actual: 4
+Promedio acumulado: 4.0
+Serial: 08viN1
+-----------------------------

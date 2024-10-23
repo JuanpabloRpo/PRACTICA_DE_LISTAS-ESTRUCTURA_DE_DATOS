@@ -12,3 +12,17 @@ precio: 47788.0
 sistema Operativo: Windows 10
 procesador: AMD Ryzen
 -----------------------------
+serial: 0oJ2M4
+marca: asus
+tamaño: 34.0
+precio: 1.2E7
+sistema Operativo: Windows 11
+procesador: AMD Ryzen
+-----------------------------
+serial: 08viN1
+marca: lg
+tamaño: 32.0
+precio: 200000.0
+sistema Operativo: Windows 11
+procesador: AMD Ryzen
+-----------------------------
