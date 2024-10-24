@@ -78,6 +78,7 @@ public class Exportar {
                     archivo.write("precio: "+dispositivo.getPrecio()+ "\n");
                     archivo.write("sistema Operativo: "+dispositivo.getSistemaOperativo()+ "\n");
                     archivo.write("procesador: "+dispositivo.getProcesador()+ "\n");
+                    archivo.write("Disponible: "+dispositivo.isDisponible()+ "\n");
                     archivo.write("-----------------------------"+ "\n");
                 }
                 archivo.write("");
@@ -105,6 +106,7 @@ public class Exportar {
                     archivo.write("precio: "+dispositivo.getPrecio()+ "\n");
                     archivo.write("almacenamiento: "+dispositivo.getAlmacenamiento()+ "\n");
                     archivo.write("peso: "+dispositivo.getPeso()+ "\n");
+                    archivo.write("Disponible: "+dispositivo.isDisponible()+ "\n");
                     archivo.write("-----------------------------"+ "\n");
                 }
                 archivo.write("");
@@ -120,48 +122,4 @@ public class Exportar {
         }
     }
 
-    public void exportarARchivoSerialIngeniero(LinkedList<String> listaDeSerial){
-
-        if (!listaDeSerial.isEmpty()){
-
-            try (FileWriter archivo = new FileWriter("Datos_Serial_Ingeniero.txt")){
-//                archivo.write("\n--- Serial Ingeniero ---\n");
-                for (String serial: listaDeSerial){
-                    archivo.write("serial: "+serial+ "\n");
-                    archivo.write("-----------------------------"+ "\n");
-                }
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }else {
-            try (FileWriter archivo = new FileWriter("Datos_Serial_Ingeniero.txt")){
-//                archivo.write("");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public void exportarARchivoSerialDiseno(LinkedList<Integer> listaDeSerial){
-
-        if (!listaDeSerial.isEmpty()){
-            try (FileWriter archivo = new FileWriter("Datos_Serial_Diseño.txt")){
-//                archivo.write("\n--- Serial Diseño ---\n");
-                for (Integer serial: listaDeSerial){
-                    archivo.write("serial: "+serial+ "\n");
-                    archivo.write("-----------------------------"+ "\n");
-                }
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }else {
-            try (FileWriter archivo = new FileWriter("Datos_Serial_Diseño.txt")){
-//                archivo.write("");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }

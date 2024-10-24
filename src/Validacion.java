@@ -95,6 +95,7 @@ public class Validacion {
         return true;
     }
 
+    // Menu para seleccionar la validacion adecuada y retorna el valor esperado
     public String eleccionAValidar(int opcion, String cadena) throws IOException {
 
         BufferedReader cp=new BufferedReader(new InputStreamReader(System.in));
@@ -172,7 +173,7 @@ public class Validacion {
         return cadena;
     }
 
-    //
+    // Metodo para verificar un dato y aparte que no se pase de un limite
     public String eleccionAValidarSinSobrepasar(int opcion, String cadena,int noSobrepasar) throws IOException {
 
         BufferedReader cp=new BufferedReader(new InputStreamReader(System.in));
@@ -195,6 +196,7 @@ public class Validacion {
 
     }
 
+    // Metodo para verificacion que no haya cedulas repetidas
     public boolean isCedulaRepeat(LinkedList<String> registroCedulas,String cedula){
 
         for (String cedulaEstudiante: registroCedulas){
@@ -206,6 +208,7 @@ public class Validacion {
         return false;
     }
 
+    // Metodo que obtiene todas las cedulas
     private LinkedList<String> cedulasEstudiantes(){
         Importar importar=new Importar();
 

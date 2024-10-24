@@ -1,0 +1,56 @@
+serial: 56436
+marca: HuionKamvasPro
+tamaño: 15.0
+precio: 1500000.0
+almacenamiento: 1 TB
+peso: 45.0
+Disponible: false
+-----------------------------
+serial: 82486
+marca: WacomCintiq
+tamaño: 16.0
+precio: 4000000.0
+almacenamiento: 1 TB
+peso: 20.0
+Disponible: true
+-----------------------------
+serial: 43214
+marca: WacomIntuosPro
+tamaño: 17.0
+precio: 2500000.0
+almacenamiento: 1 TB
+peso: 15.0
+Disponible: false
+-----------------------------
+serial: 88137
+marca: PPenArtist
+tamaño: 16.0
+precio: 2000000.0
+almacenamiento: 512 GB
+peso: 14.0
+Disponible: false
+-----------------------------
+serial: 77855
+marca: WacomOnebyWacomMedium
+tamaño: 18.0
+precio: 3000000.0
+almacenamiento: 1 TB
+peso: 17.0
+Disponible: true
+-----------------------------
+serial: 46763
+marca: HuionInspiroy
+tamaño: 16.0
+precio: 4000000.0
+almacenamiento: 256 GB
+peso: 26.0
+Disponible: false
+-----------------------------
+serial: 42763
+marca: UgeeDrawingTablet
+tamaño: 17.0
+precio: 5000000.0
+almacenamiento: 1 TB
+peso: 16.0
+Disponible: false
+-----------------------------

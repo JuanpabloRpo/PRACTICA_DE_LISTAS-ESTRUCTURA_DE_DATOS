@@ -3,13 +3,14 @@ public class Dispositivo {
     private String marca;
     private double tamano;
     private double precio;
-    private boolean disponible=false;
+    private boolean disponible;
 
-    public Dispositivo(String serial, String marca, double tamano, double precio) {
+    public Dispositivo(String serial, String marca, double tamano, double precio,boolean disponible) {
         this.serial = serial;
         this.marca = marca;
         this.tamano = tamano;
         this.precio = precio;
+        this.disponible=disponible;
     }
 
     public String getSerial() {

@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -14,6 +15,7 @@ public class Llenado {
 
     }
 
+    // Metodo para llenar los estudiantes que estudian ingenieria
     public ESTUDIANTE_INGENIERIA llenarIngeniero(String serialIngeniero) throws IOException {
         String cedula;
         String nombre;
@@ -39,11 +41,11 @@ public class Llenado {
         
         System.out.println("Ingrese el promedio acumulado: ");
         promedioAcumulado = Double.parseDouble(validar.eleccionAValidarSinSobrepasar(2,cp.readLine() ,5));
-        
-        System.out.println("El serial generado aleatoriamente es: "+serialIngeniero);
 
         return new ESTUDIANTE_INGENIERIA(cedula, nombre, apellido, telefono, numeroDelSemestreActual, promedioAcumulado, serialIngeniero);
     }
+
+    // Metodo para llenar los estudiantes que estudian diseño
     public ESTUDIANTE_DISENO llenarDiseno(int serialDiseno) throws IOException{
         String cedula;
         String nombre;
@@ -68,11 +70,11 @@ public class Llenado {
 
         System.out.println("Ingrese la cantidad de asignaturas: ");
         cantidadAsignaturas = Integer.parseInt(validar.eleccionAValidarSinSobrepasar(1,cp.readLine(),7));
-        
-        System.out.println("El serial asignado a usted es: " + serialDiseno);
 
         return new ESTUDIANTE_DISENO(cedula, nombre, apellido, telefono, modalidad, cantidadAsignaturas, serialDiseno);
     }
+
+    // Metodo para llenar los datos de las tabletas graficas
     public TABLETA_GRAFICA llenarTableta_GRAFICA(int newSerial)throws IOException{
 
         String serial = String.valueOf(newSerial);
@@ -96,9 +98,10 @@ public class Llenado {
         System.out.println("Ingrese el peso en kilogramos(Kg): ");
         peso = Double.parseDouble(validar.eleccionAValidar(2, cp.readLine()));
 
-        return new TABLETA_GRAFICA(serial, marca, tamano, precio, almacenamiento, peso);
+        return new TABLETA_GRAFICA(serial, marca, tamano, precio, almacenamiento, peso,false);
     }
 
+    // Metodo para llenar los datos de los computadores
     public COMPUTADOR_PORTATIL llenarComputador(String newSerial) throws IOException{
 
         String marca;
@@ -119,10 +122,10 @@ public class Llenado {
         sistemaOperativo = opcionSistemaOperativo();
         procesador = opcionProcesador();
 
-        return new COMPUTADOR_PORTATIL(newSerial, marca, tamano, precio, sistemaOperativo, procesador);
+        return new COMPUTADOR_PORTATIL(newSerial, marca, tamano, precio, sistemaOperativo, procesador,false);
     }
-    //  Método para seleccion la modalidad de estudio
 
+    //  Método para seleccion la modalidad de estudio
     public String opcionEstudio()throws IOException{
         System.out.println("Ingrese \"1\" si el estudiante estudia de manera Virtual o \"2\" si estudia de manera Presencial: ");
         int opcion = Integer.parseInt(validar.eleccionAValidarSinSobrepasar(1, cp.readLine(),2));
@@ -138,8 +141,8 @@ public class Llenado {
         }
         return "Gracias por su elección";
     }
-    // Método para selecion de almacenamiento de la tableta grafica
 
+    // Método para selecion de almacenamiento de la tableta grafica
     public String opcionAlmacenamiento()throws IOException{
         System.out.println("Ingrese 1 si desea un almacenamiento de 256 GB: \n Ingrese 2 si desea un almacenamiento de 512 GB: \n Ingrese 3 si desea un almacenamiento de 1 TB: ");
         int opcion = Integer.parseInt(validar.eleccionAValidarSinSobrepasar(1, cp.readLine(),3));
@@ -159,8 +162,8 @@ public class Llenado {
         }
         return "Gracias por su elección";
     }
-    // Método para selecionar el sistema operativo del computador portatil
 
+    // Método para selecionar el sistema operativo del computador portatil
     public String opcionSistemaOperativo()throws IOException{
         System.out.println("Ingrese 1 si desea el sistema operativo Windows 7: \n Ingrese 2 si desea el sistema operativo Windows 10: \n Ingrese 3 si desea el sistema operativo Windows 11: ");
 
@@ -180,6 +183,7 @@ public class Llenado {
         }
         return "Gracias por su elección";
     }
+
     // Método para seleccionar el tipo de procesador del computador portatil
     public String opcionProcesador()throws IOException{
         System.out.println("Ingrese 1 si desea el procesador AMD Ryzen: \n Ingrese 2 si desea el procesadaor Intel® Core™ i5: ");
@@ -198,16 +202,16 @@ public class Llenado {
     }
 
     // Método para crear el serial de números enteros de estudiantes de diseño
-    public int serialEnteros(LinkedList<Integer> serialesDiseno){
+    public int serialEnteros(LinkedList<ESTUDIANTE_DISENO> estudiantesDiseno){
         String serial = "0";
         Random random = new Random();
         for (int i = 0; i < 5; i++) {
              serial += String.valueOf(random.nextInt(9-1) +1);     
         }
 
-        for (Integer serialLista : serialesDiseno) {
-            if (Integer.parseInt(serial) == serialLista) {
-                serial = String.valueOf(serialEnteros(serialesDiseno));
+        for (ESTUDIANTE_DISENO estudiante : estudiantesDiseno) {
+            if (Integer.parseInt(serial) == estudiante.getSerial()) {
+                serial = String.valueOf(serialEnteros(estudiantesDiseno));
                 break;
             }
         }
@@ -216,7 +220,7 @@ public class Llenado {
     }
 
     // Metodo para crear el serial de tipo String  de estudiantes de ingenieria
-    public String serialStrings(LinkedList<String> serialesIngenieria){
+    public String serialStrings(LinkedList<ESTUDIANTE_INGENIERIA> estudianteIngenieria){
         String serial = "0";
         Random random = new Random();
         for (int i = 0; i < 5; i++) {
@@ -228,15 +232,13 @@ public class Llenado {
                
        }
 
-
-        for (String serialLista : serialesIngenieria) {
-            if (serial.equals(serialLista)) {
-                serial = String.valueOf(serialStrings(serialesIngenieria));
+        // Comprobamos que el serial no se repita; en tal caso se vuelve a llamar la funcion
+        for (ESTUDIANTE_INGENIERIA  estudiante: estudianteIngenieria) {
+            if (serial.equals(estudiante.getSerial())) {
+                serial = String.valueOf(serialStrings(estudianteIngenieria));
                 break;
             }
         }
-
-
 
         return serial;   
     }
@@ -257,6 +259,147 @@ public class Llenado {
         }else{
             return random.nextInt(65,91);
         }
+    }
+
+    // Metodo para buscar los computadores disponibles
+    public String buscarComputador(LinkedList<COMPUTADOR_PORTATIL> computadores) throws IOException{
+
+        int count = 0;
+
+        ArrayList<String> serialesDisponibles = new ArrayList<>();
+        for (COMPUTADOR_PORTATIL dispositivo: computadores){
+
+            if (dispositivo.isDisponible()){
+
+                count++;
+
+                if (count==1) {
+                    System.out.println("\nEn este momento tenemos disponibles los siguientes computadores: ");
+                }
+                serialesDisponibles.add(dispositivo.getSerial());
+                System.out.println("----------------------------------------");
+                System.out.println("serial: "+dispositivo.getSerial()+ "\n");
+                System.out.println("marca: "+dispositivo.getMarca()+ "\n");
+                System.out.println("tamaño: "+dispositivo.getTamano()+ "\n");
+                System.out.println("precio: "+dispositivo.getPrecio()+ "\n");
+                System.out.println("sistema Operativo: "+dispositivo.getSistemaOperativo()+ "\n");
+                System.out.println("procesador: "+dispositivo.getProcesador()+ "\n");
+                System.out.println("-----------------------------"+ "\n");
+            }
+
+        }
+
+        if (count>4) {
+            System.out.println("Digite el serial del computador que le gusto: ");
+            String opcion=validar.eleccionAValidar(3,cp.readLine());
+            while (true){
+                if (serialesDisponibles.contains(opcion)){
+                    return opcion;
+
+                }else {
+                    System.out.println("Dato no valido, digite un serial que este disponible: ");
+                    opcion=validar.eleccionAValidar(3,cp.readLine());
+                }
+            }
+        }
+
+        if(count>0) {
+            System.out.println("Digite el serial del computador que le gusto ó digite NO para escoger las especificaciones: ");
+            return validar.eleccionAValidar(3,cp.readLine());
+        }else {
+            System.out.println("-------------------------------------------------------------------------------------");
+            System.out.println("\nDigite los datos del computador que desea: \n");
+            System.out.println("-------------------------------------------------------------------------------------");
+            return "-100";
+        }
+
+    }
+
+    // Metodo para asignar un computador disponible
+    public COMPUTADOR_PORTATIL asignarComputador(LinkedList<COMPUTADOR_PORTATIL> computadores) throws IOException {
+
+        String serial = buscarComputador(computadores);
+
+        for (COMPUTADOR_PORTATIL dispositivo: computadores){
+
+            if (serial.equals(dispositivo.getSerial()) && dispositivo.isDisponible()){
+                return dispositivo;
+            }
+
+        }
+
+        return null;
+    }
+
+    // Metodo para buscar las tablets disponibles
+    public String buscarTabletas(LinkedList<TABLETA_GRAFICA> tabletasGraficas) throws IOException{
+
+        int cout = 0;
+
+        ArrayList<String> serialesDisponibles=new ArrayList<>();
+
+        for (TABLETA_GRAFICA dispositivo: tabletasGraficas){
+
+            if (dispositivo.isDisponible()){
+                cout++;
+                if (cout==1){
+                    System.out.println("\n----- En este momento tenemos disponibles las siguientes tablets: ");
+                }
+                System.out.println("-------------------------------------------");
+                serialesDisponibles.add(dispositivo.getSerial());
+                System.out.println("serial: "+dispositivo.getSerial()+ "\n");
+                System.out.println("marca: "+dispositivo.getMarca()+ "\n");
+                System.out.println("tamaño: "+dispositivo.getTamano()+ "\n");
+                System.out.println("precio: "+dispositivo.getPrecio()+ "\n");
+                System.out.println("almacenamiento: "+dispositivo.getAlmacenamiento()+ "\n");
+                System.out.println("peso: "+dispositivo.getPeso()+ "\n");
+                System.out.println("-----------------------------"+ "\n");
+            }
+
+        }
+
+        if(cout>4){
+            System.out.println("Digite el serial de la tableta que le gusto: ");
+            String opcion=validar.eleccionAValidar(3,cp.readLine());
+            while (true){
+                if (serialesDisponibles.contains(opcion)){
+                    return opcion;
+
+                }else {
+                    System.out.println("Dato no valido, digite un serial que este disponible: ");
+                    opcion=validar.eleccionAValidar(3,cp.readLine());
+                }
+            }
+        }
+
+        if (cout>0){
+
+            System.out.println("Digite el serial de la tableta que le gusto ó digite NO para escoger las especificaciones: ");
+            return validar.eleccionAValidar(3,cp.readLine());
+        }else {
+            System.out.println("-------------------------------------------------------------------------------------");
+            System.out.println("\nDigite los datos de la tableta que desea: \n");
+            System.out.println("-------------------------------------------------------------------------------------");
+            return "-100";
+        }
+
+
+    }
+
+    // Metodo para asignar una tablet disponible
+    public TABLETA_GRAFICA asignarTableta(LinkedList<TABLETA_GRAFICA> tabletasGraficas) throws IOException {
+
+        String serial = buscarTabletas(tabletasGraficas);
+
+        for (TABLETA_GRAFICA dispositivo: tabletasGraficas){
+
+            if (serial.equals(String.valueOf(dispositivo.getSerial())) && dispositivo.isDisponible()){
+                return dispositivo;
+            }
+        }
+
+
+        return null;
     }
 
 }

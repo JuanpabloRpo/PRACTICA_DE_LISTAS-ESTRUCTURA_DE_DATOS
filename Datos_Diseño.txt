@@ -1,0 +1,40 @@
+Cedula: 78459kf
+Nombre: Juliana
+Apellido: Alvarez
+Telefono: 315147865
+Modalidad de estudio: Presencial
+cantidad de asignaturas: 7
+Serial: 56436
+-----------------------------
+Cedula: 1245668aq
+Nombre: David
+Apellido: molina
+Telefono: 3457811224
+Modalidad de estudio: Presencial
+cantidad de asignaturas: 4
+Serial: 46763
+-----------------------------
+Cedula: 456se88
+Nombre: Juana
+Apellido: Ramirez
+Telefono: 345781645
+Modalidad de estudio: Presencial
+cantidad de asignaturas: 6
+Serial: 43214
+-----------------------------
+Cedula: 78sd54
+Nombre: Samuel
+Apellido: Ortiz
+Telefono: 321455
+Modalidad de estudio: Virtual
+cantidad de asignaturas: 5
+Serial: 42763
+-----------------------------
+Cedula: 7854ddf
+Nombre: Camila
+Apellido: Gonzales
+Telefono: 456774441
+Modalidad de estudio: Presencial
+cantidad de asignaturas: 4
+Serial: 88137
+-----------------------------

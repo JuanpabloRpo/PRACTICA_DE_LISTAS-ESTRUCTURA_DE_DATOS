@@ -2,8 +2,8 @@ public class TABLETA_GRAFICA extends Dispositivo{
     private String almacenamiento;
     private double peso;
 
-    public TABLETA_GRAFICA(String serial, String marca, double tamano, double precio, String almacenamiento, double peso) {
-        super(serial, marca, tamano, precio);
+    public TABLETA_GRAFICA(String serial, String marca, double tamano, double precio, String almacenamiento, double peso,boolean disponible) {
+        super(serial, marca, tamano, precio,disponible);
         this.almacenamiento = almacenamiento;
         this.peso = peso;
     }

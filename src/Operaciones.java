@@ -8,8 +8,6 @@ public class Operaciones {
     private LinkedList<ESTUDIANTE_DISENO> estudiantesDisenoGlobal = new LinkedList<>();
     private LinkedList<TABLETA_GRAFICA> tabletasGraficasGlobal = new LinkedList<>();
     private LinkedList<COMPUTADOR_PORTATIL> computadoresPortatilesGlobal = new LinkedList<>();
-    private LinkedList<Integer> serialDisenoGlobal = new LinkedList<>();
-    private LinkedList<String> serialIngenieriaGlobal = new LinkedList<>();
     
 
     public Operaciones() {
@@ -29,7 +27,7 @@ public class Operaciones {
             estudiantesDisenoGlobal=verificar2;
         }
 
-        // se importa y se verifica que haya datos sobre los computadores
+        // se importa y se verifica que haya datos sobre las tablets
         LinkedList<TABLETA_GRAFICA> verificar3 = importar.importarArchivoTableta();
         if (verificar3!=null){
             tabletasGraficasGlobal=verificar3;
@@ -41,15 +39,6 @@ public class Operaciones {
             computadoresPortatilesGlobal=verificar4;
         }
 
-        LinkedList<String> verificar5 = importar.importarArchivoSrialIngenieros();
-        if (verificar5!=null){
-            serialIngenieriaGlobal=verificar5;
-        }
-
-        LinkedList<Integer> verificar6 = importar.importarArchivoSerialDiseno();
-        if (verificar6!=null){
-            serialDisenoGlobal=verificar6;
-        }
     }
 
     public void menu() throws IOException{
@@ -60,8 +49,6 @@ public class Operaciones {
         LinkedList<ESTUDIANTE_DISENO> estudiantesDiseno = estudiantesDisenoGlobal;
         LinkedList<TABLETA_GRAFICA> tabletasGraficas = tabletasGraficasGlobal;
         LinkedList<COMPUTADOR_PORTATIL> computadoresPortatiles = computadoresPortatilesGlobal;
-        LinkedList<Integer> serialDiseno = serialDisenoGlobal;
-        LinkedList<String> serialIngenieria = serialIngenieriaGlobal;
         
         Validacion validar=new Validacion();
         Llenado llenar=new Llenado();
@@ -102,40 +89,54 @@ public class Operaciones {
                                 switch (opcionIngenieria){
                                     case "1":
 
-                                        ESTUDIANTE_INGENIERIA newEstudiante = llenar.llenarIngeniero(llenar.serialStrings(serialIngenieria));
+                                        ESTUDIANTE_INGENIERIA newEstudiante = llenar.llenarIngeniero(llenar.serialStrings(estudiantesIngenieria));
+
+
+                                        COMPUTADOR_PORTATIL newComputador=llenar.asignarComputador(computadoresPortatiles);
+
+                                        if (newComputador!=null){
+                                            for(COMPUTADOR_PORTATIL compu:computadoresPortatiles ){
+                                                if (compu.getSerial().equals(newComputador.getSerial())){
+
+                                                    compu.setDisponible(false);
+                                                    newEstudiante.setSerial(compu.getSerial());
+                                                    break;
+
+                                                }
+                                            }
+                                        }else {
+                                            newComputador=llenar.llenarComputador(newEstudiante.getSerial());
+                                            computadoresPortatiles.add(newComputador);
+                                        }
+
+                                        System.out.println("El serial asignado a usted es: " + newEstudiante.getSerial());
                                         estudiantesIngenieria.add(newEstudiante);
-                                        serialIngenieria.add(newEstudiante.getSerial());
-
-                                        COMPUTADOR_PORTATIL newComputador=llenar.llenarComputador(newEstudiante.getSerial());
-                                        computadoresPortatiles.add(newComputador);
-
-                                        exportarIngenieros(estudiantesIngenieria,computadoresPortatiles,serialIngenieria);
+                                        exportarIngenieros(estudiantesIngenieria,computadoresPortatiles);
                                         break;
                                     case "2":
                                         Importar importar=new Importar();
 
                                         System.out.println("ingrese la cedula o el serial a modifcar: ");
 
-                                        estudiantesIngenieria=modificarEstudianteIngenieria(estudiantesIngenieria,validar.eleccionAValidar(3, cp.readLine()),serialIngenieria,computadoresPortatiles);
+                                        estudiantesIngenieria=modificarEstudianteIngenieria(estudiantesIngenieria,validar.eleccionAValidar(3, cp.readLine()),computadoresPortatiles);
 
-                                        serialIngenieria = importar.importarArchivoSrialIngenieros();
                                         computadoresPortatiles = importar.importarArchivoComputador();
 
                                         exportarI(estudiantesIngenieria);
                                         break;
                                     case "3":
 
-                                        System.out.println("ingrese la cedula o el serial a eliminar: ");
+                                        System.out.println("ingrese la cedula o el serial para hacer la devolución: ");
 
                                         ArrayList<Integer> datos=dispositivoIngenieria(validar.eleccionAValidar(3, cp.readLine()));
+                                        // 0 , 1
                                         if (datos.getFirst()==1){
-
+                                            // indice del estudiante
                                             estudiantesIngenieria.remove(estudiantesIngenieria.get(datos.get(1)));
-                                            computadoresPortatiles.remove(computadoresPortatiles.get(datos.get(2)));
-                                            serialIngenieria.remove(serialIngenieria.get(datos.get(3)));
+                                            // indice del computador
+                                            computadoresPortatiles.get(datos.get(2)).setDisponible(true);
                                             System.out.println("Devolucion hecha");
-                                            exportarIngenieros(estudiantesIngenieria,computadoresPortatiles,serialIngenieria);
-
+                                            exportarIngenieros(estudiantesIngenieria,computadoresPortatiles);
                                         }else {
                                             System.out.println("El estudiante no tiene un registro");
                                         }
@@ -178,23 +179,43 @@ public class Operaciones {
                             if (validar.isInt(opcionDiseno)){
                                 switch (opcionDiseno){
                                     case "1":
-                                        ESTUDIANTE_DISENO newEstudiante = llenar.llenarDiseno(llenar.serialEnteros(serialDiseno));
+                                        ESTUDIANTE_DISENO newEstudiante = llenar.llenarDiseno(llenar.serialEnteros(estudiantesDiseno));
+
+
+
+                                        TABLETA_GRAFICA newTableta_GRAFICA = llenar.asignarTableta(tabletasGraficas);
+
+                                        if (newTableta_GRAFICA!=null){
+
+                                            for (TABLETA_GRAFICA table:tabletasGraficas){
+
+                                                if (table.getSerial().equals(newTableta_GRAFICA.getSerial())){
+
+                                                    table.setDisponible(false);
+                                                    newEstudiante.setSerial(Integer.parseInt(table.getSerial()));
+                                                    break;
+
+                                                }
+
+                                            }
+
+                                        }else {
+                                            newTableta_GRAFICA = llenar.llenarTableta_GRAFICA(newEstudiante.getSerial());
+                                            tabletasGraficas.add(newTableta_GRAFICA);
+                                        }
+
+                                        System.out.println("El serial generado aleatoriamente es: "+newEstudiante.getSerial());
                                         estudiantesDiseno.add(newEstudiante);
-                                        serialDiseno.add(newEstudiante.getSerial());
-
-                                        TABLETA_GRAFICA newTableta_GRAFICA = llenar.llenarTableta_GRAFICA(newEstudiante.getSerial());
-                                        tabletasGraficas.add(newTableta_GRAFICA);
-
-                                        exportarDisenadores(estudiantesDiseno,tabletasGraficas,serialDiseno);
+                                        exportarDisenadores(estudiantesDiseno,tabletasGraficas);
                                         break;
                                     case "2":
                                         Importar importar=new Importar();
 
+
                                         System.out.println("ingrese la cedula o el serial a modifcar: ");
 
-                                        estudiantesDiseno=modificarEstudianteDiseno(estudiantesDiseno,validar.eleccionAValidar(3, cp.readLine()),serialDiseno,tabletasGraficas);
+                                        estudiantesDiseno=modificarEstudianteDiseno(estudiantesDiseno,validar.eleccionAValidar(3, cp.readLine()),tabletasGraficas);
 
-                                        serialDiseno = importar.importarArchivoSerialDiseno();
                                         tabletasGraficas = importar.importarArchivoTableta();
 
                                         exportarD(estudiantesDiseno);
@@ -206,12 +227,12 @@ public class Operaciones {
 
                                         ArrayList<Integer> datos=dispositivoDiseno(validar.eleccionAValidar(3, cp.readLine()));
                                         if (datos.getFirst()==1){
-
                                             estudiantesDiseno.remove(estudiantesDiseno.get(datos.get(1)));
-                                            tabletasGraficas.remove(tabletasGraficas.get(datos.get(2)));
-                                            serialDiseno.remove(serialDiseno.get(datos.get(3)));
+
+                                            tabletasGraficas.get(datos.get(2)).setDisponible(true);
+
                                             System.out.println("Devolucion hecha");
-                                            exportarDisenadores(estudiantesDiseno,tabletasGraficas,serialDiseno);
+                                            exportarDisenadores(estudiantesDiseno,tabletasGraficas);
 
                                         }else {
                                             System.out.println("El estudiante no tiene un registro");
@@ -220,7 +241,9 @@ public class Operaciones {
                                         break;
                                     case "4":
 
-                                        System.out.println("null");
+                                        System.out.println("Ingrese la cedula o serial del prestamo del estudiante a buscar");
+                                        buscardiseno(estudiantesDiseno, tabletasGraficas,validar.eleccionAValidar(3, cp.readLine()) );
+
                                         break;
                                     case "5":
                                         flagMenuDiseno=false;
@@ -234,12 +257,11 @@ public class Operaciones {
 
                         break;
                     case "3":
-                        System.out.println(lineas);
-                        System.out.println("Mantenimiento");
+                        mostrarInventario(estudiantesIngenieria,estudiantesDiseno,computadoresPortatiles,tabletasGraficas);
                         break;
                     case "4":
-                        exportarIngenieros(estudiantesIngenieria,computadoresPortatiles,serialIngenieria);
-                        exportarDisenadores(estudiantesDiseno,tabletasGraficas,serialDiseno);
+                        exportarIngenieros(estudiantesIngenieria,computadoresPortatiles);
+                        exportarDisenadores(estudiantesDiseno,tabletasGraficas);
                         flagMenu=false;
                         break;
                     default:
@@ -250,40 +272,48 @@ public class Operaciones {
             }
         }
     }
-    // empiecen de aqui para abajo
 
-    public LinkedList<ESTUDIANTE_INGENIERIA> modificarEstudianteIngenieria(LinkedList<ESTUDIANTE_INGENIERIA> estudiantesIngenieria, String buscar, LinkedList<String> serialIngenieria, LinkedList<COMPUTADOR_PORTATIL> computadoresPortatiles ) throws IOException{
+    // Metodo para modificar el prestamo de que hizo un estudiante de ingenieria
+    public LinkedList<ESTUDIANTE_INGENIERIA> modificarEstudianteIngenieria(LinkedList<ESTUDIANTE_INGENIERIA> estudiantesIngenieria, String buscar, LinkedList<COMPUTADOR_PORTATIL> computadoresPortatiles) throws IOException{
 
         Llenado llenar=new Llenado();
         boolean Ishere=false;
-
+        //
         for(ESTUDIANTE_INGENIERIA estudiante:estudiantesIngenieria){
+
             if (estudiante.getSerial().equals(buscar) || estudiante.getCedula().equals(buscar)){
 
-                String serialAnterior=estudiante.getSerial();
-                estudiante.setSerial(llenar.serialStrings(serialIngenieria));
-
+                // se busca el computador
                 for (COMPUTADOR_PORTATIL computador :computadoresPortatiles){
 
-                    if (computador.getSerial().equals(serialAnterior)){
-                        computadoresPortatiles.remove(computador);
+                    // se encuentra el computador buscado
+                    if (computador.getSerial().equals(estudiante.getSerial())){
 
-                        computadoresPortatiles.add(llenar.llenarComputador(estudiante.getSerial()));
+                        COMPUTADOR_PORTATIL compu = llenar.asignarComputador(computadoresPortatiles);
+
+                        if(compu!=null){
+                            for (COMPUTADOR_PORTATIL computador2 :computadoresPortatiles){
+
+                                if (computador2.getSerial().equals(compu.getSerial())){
+
+                                    computador2.setDisponible(false);
+                                    estudiante.setSerial(computador2.getSerial());
+                                    break;
+
+                                }
+                            }
+                        }else{
+
+                            estudiante.setSerial(llenar.serialStrings(estudiantesIngenieria));
+                            computadoresPortatiles.add(llenar.llenarComputador(estudiante.getSerial()));
+
+                        }
+                        computador.setDisponible(true);
                         break;
                     }
 
                 }
 
-                for (String serial:serialIngenieria){
-
-                    if (serial.equals(serialAnterior)){
-
-                        serialIngenieria.remove(serialAnterior);
-                        serialIngenieria.add(estudiante.getSerial());
-                        break;
-
-                    }
-                }
                 Ishere=true;
                 break;
             }
@@ -292,7 +322,6 @@ public class Operaciones {
 
         if (Ishere){
             exportarC(computadoresPortatiles);
-            exportarS(serialIngenieria);
         }else {
             System.out.println("No se encontro la cedula o el serial en la base de datos.");
         }
@@ -300,38 +329,50 @@ public class Operaciones {
         return estudiantesIngenieria;
     }
 
-    public LinkedList<ESTUDIANTE_DISENO> modificarEstudianteDiseno(LinkedList<ESTUDIANTE_DISENO> estudiantesDiseno,String buscar, LinkedList<Integer> serialDiseno, LinkedList<TABLETA_GRAFICA> tabletaGraficas ) throws IOException{
+    // Metodo para modificar el prestamo de que hizo un estudiante de ingenieria
+    public LinkedList<ESTUDIANTE_DISENO> modificarEstudianteDiseno(LinkedList<ESTUDIANTE_DISENO> estudiantesDiseno,String buscar, LinkedList<TABLETA_GRAFICA> tabletaGraficas) throws IOException{
 
         Llenado llenar=new Llenado();
         boolean Ishere=false;
 
+        //
         for(ESTUDIANTE_DISENO estudiante:estudiantesDiseno){
-            if (estudiante.getSerial() == Integer.parseInt(buscar) || estudiante.getCedula().equals(buscar)){
 
-                Integer serialAnterior=estudiante.getSerial();
-                estudiante.setSerial(llenar.serialEnteros(serialDiseno));
+            if (String.valueOf(estudiante.getSerial()).equals(buscar) || estudiante.getCedula().equals(buscar)){
+
 
                 for (TABLETA_GRAFICA tableta :tabletaGraficas){
 
-                    if (Integer.parseInt(tableta.getSerial())==serialAnterior){
-                        tabletaGraficas.remove(tableta);
 
-                        tabletaGraficas.add(llenar.llenarTableta_GRAFICA(estudiante.getSerial()));
+                    if (tableta.getSerial().equals(String.valueOf(estudiante.getSerial()))){
+
+                        TABLETA_GRAFICA table = llenar.asignarTableta(tabletaGraficas);
+
+                        if(table!=null){
+
+                            for (TABLETA_GRAFICA tableta2 :tabletaGraficas){
+
+                                if (tableta2.getSerial().equals(table.getSerial())){
+
+                                    tableta2.setDisponible(false);
+                                    estudiante.setSerial(Integer.parseInt(tableta2.getSerial()));
+                                    break;
+
+                                }
+                            }
+                        }else{
+
+                            estudiante.setSerial(llenar.serialEnteros(estudiantesDiseno));
+                            tabletaGraficas.add(llenar.llenarTableta_GRAFICA(estudiante.getSerial()));
+
+                        }
+
+                        tableta.setDisponible(true);
                         break;
                     }
 
                 }
 
-                for (Integer serial:serialDiseno){
-
-                    if (serial.equals(serialAnterior)){
-
-                        serialDiseno.remove(serialAnterior);
-                        serialDiseno.add(estudiante.getSerial());
-                        break;
-
-                    }
-                }
                 Ishere=true;
                 break;
             }
@@ -340,7 +381,6 @@ public class Operaciones {
 
         if (Ishere){
             exportarT(tabletaGraficas);
-            exportarSd(serialDiseno);
         }else {
             System.out.println("No se encontro la cedula o el serial en la base de datos.");
         }
@@ -348,14 +388,13 @@ public class Operaciones {
         return estudiantesDiseno;
     }
 
-    //metodo devolucion ingenieria
+    // Metodo devolucion ingenieria
     public ArrayList<Integer> dispositivoIngenieria(String buscar){
 
         Importar importar = new Importar();
 
         ArrayList<Integer> datos = new ArrayList<>();
         LinkedList<ESTUDIANTE_INGENIERIA> estudiantes = importar.importarArchivoIngnieria();
-        LinkedList<String> seriales = importar.importarArchivoSrialIngenieros();
         LinkedList<COMPUTADOR_PORTATIL> computadores = importar.importarArchivoComputador();
 
         for (int i=0; i<estudiantes.size();i++){
@@ -366,18 +405,14 @@ public class Operaciones {
                 datos.add(i);
 
                 for (int j=0;j < computadores.size();j++){
-                    if (computadores.get(j).getSerial().equals(estudiantes.get(i).getSerial())){
+
+                    if (computadores.get(j).getSerial().equalsIgnoreCase(estudiantes.get(i).getSerial())){
                         // Tercer valor: indice computador
+
                         datos.add(j);
                     }
                 }
 
-                for (int k=0; k<seriales.size();k++){
-                    if (seriales.get(k).equals(estudiantes.get(i).getSerial())){
-                        // Cuarto valor: indice serial
-                        datos.add(k);
-                    }
-                }
                 return datos;
             }
         }
@@ -388,18 +423,17 @@ public class Operaciones {
         return datos;
     }
 
-    //metodo devolucion diseño
+    // Metodo devolucion diseño
     public ArrayList<Integer> dispositivoDiseno(String buscar){
 
         Importar importar = new Importar();
 
         ArrayList<Integer> datos = new ArrayList<>();
         LinkedList<ESTUDIANTE_DISENO> estudiantes = importar.importarArchivoDiseno();
-        LinkedList<Integer> seriales = importar.importarArchivoSerialDiseno();
         LinkedList<TABLETA_GRAFICA> tableta = importar.importarArchivoTableta();
 
         for (int i=0; i<estudiantes.size();i++){
-            if (estudiantes.get(i).getCedula().equals(buscar) || estudiantes.get(i).getSerial() == Integer.parseInt(buscar)){
+            if (estudiantes.get(i).getCedula().equals(buscar) || String.valueOf(estudiantes.get(i).getSerial()).equals(buscar)){
                 // Primer valor 0,1; 0 si no esta, 1 si esta
                 datos.add(1);
                 // Segundo valor: indice estudiante
@@ -411,13 +445,6 @@ public class Operaciones {
                         datos.add(j);
                     }
                 }
-
-                for (int k=0; k<seriales.size();k++){
-                    if (seriales.get(k) == estudiantes.get(i).getSerial()){
-                        // Cuarto valor: indice serial
-                        datos.add(k);
-                    }
-                }
                 return datos;
             }
         }
@@ -428,15 +455,25 @@ public class Operaciones {
         return datos;
     }
 
+    // Metodo para mostrar el prestamo de un estudiante de ingenieria mediante el serial o la cedula
     public void buscarIngenieria(LinkedList<ESTUDIANTE_INGENIERIA> estudiantesIngenieria, LinkedList<COMPUTADOR_PORTATIL> computadoresPortatiles, String buscar){
+
         boolean isIn=false;
+
         for(ESTUDIANTE_INGENIERIA estudiante:estudiantesIngenieria){
+
             if (estudiante.getSerial().equals(buscar) || estudiante.getCedula().equals(buscar)){
+
                 System.out.println("El estudiante: "+ estudiante.getNombre()+" " +estudiante.getApellido());
                 isIn=true;
+
                 for (COMPUTADOR_PORTATIL computador :computadoresPortatiles){
+
                     if (computador.getSerial().equals(estudiante.getSerial())){
-                System.out.println("Tiene un prestamo activo del computador portatil: " + computador.getMarca() + " \ncon un procesador: " + computador.getProcesador() + "\n con un sistema operativo: " + computador.getSistemaOperativo());
+
+                        System.out.println("Tiene un prestamo activo del computador portatil: " + computador.getMarca() +
+                        " \nCon un procesador: " + computador.getProcesador() +
+                        "\nCon un sistema operativo: " + computador.getSistemaOperativo());
                         break;
                     }
 
@@ -448,13 +485,111 @@ public class Operaciones {
             System.out.println("El prestamo del estudiante que desea ingresar no se encuentra");
         }
     }
-    // ultimo metodo
+
+    // Metodo para mostrar el prestamo de un estudiante de diseño mediante el serial o la cedula
+    public void buscardiseno(LinkedList<ESTUDIANTE_DISENO> estudiantesdiseno, LinkedList<TABLETA_GRAFICA> tabletasGraficas, String buscar){
+
+        boolean isIn=false;
+
+        for(ESTUDIANTE_DISENO estudiante:estudiantesdiseno){
+
+            if (estudiante.getCedula().equals(buscar) || String.valueOf(estudiante.getSerial()).equals(buscar) ){
+
+                System.out.println("El estudiante: "+ estudiante.getNombre()+" " +estudiante.getApellido());
+                isIn=true;
+
+                for (TABLETA_GRAFICA tableta :tabletasGraficas){
+
+                    if (tableta.getSerial().equals(String.valueOf(estudiante.getSerial()))){
+
+                        System.out.println("Tiene un prestamo activo de la Tableta Grafica: " + tableta.getMarca() +
+                                " \nCon un almacenamiento de : " + tableta.getAlmacenamiento());
+                        break;
+                    }
+
+                }
+                break;
+            }
+        }
+        if (!isIn){
+            System.out.println("El prestamo del estudiante que desea ingresar no se encuentra");
+        }
+    }
+
+    // Metodo para mostrar el inventario total
+    public void mostrarInventario(LinkedList<ESTUDIANTE_INGENIERIA> estudianteI,LinkedList<ESTUDIANTE_DISENO> estudianteD,LinkedList<COMPUTADOR_PORTATIL> computadores,LinkedList<TABLETA_GRAFICA> tabletaGraficas){
+
+        String lineas="------------------------------------------------------------";
+
+        System.out.println(lineas);
+
+        System.out.println("\n--- INVENTARIO NO DISPONIBLE ---\n");
+
+        for (ESTUDIANTE_INGENIERIA estudiante : estudianteI){
+            System.out.println(lineas);
+            System.out.println(estudiante.getNombre()+" "+estudiante.getApellido());
+
+            for (COMPUTADOR_PORTATIL computadorPortatil: computadores){
+                if (computadorPortatil.getSerial().equals(estudiante.getSerial())){
+
+                    System.out.println("Tiene un prestamo activo del computador portatil: " + computadorPortatil.getMarca() +
+                            " \nCon un procesador: " + computadorPortatil.getProcesador() +
+                            "\nCon un sistema operativo: " + computadorPortatil.getSistemaOperativo());
+                    break;
+                }
+            }
+        }
+
+        for (ESTUDIANTE_DISENO estudiante: estudianteD){
+            System.out.println(lineas);
+            System.out.println(estudiante.getNombre()+" "+estudiante.getApellido());
+
+            for (TABLETA_GRAFICA tableta: tabletaGraficas){
+                if (String.valueOf(estudiante.getSerial()).equals(tableta.getSerial())){
+                    System.out.println("Tiene un prestamo activo de la Tableta Grafica: " + tableta.getMarca() +
+                            " \nCon un almacenamiento de : " + tableta.getAlmacenamiento());
+                    break;
+                }
+            }
+        }
+
+        System.out.println(lineas);
+        System.out.println("\n--- INVENTARIO DISPONIBLE ---\n");
+        for (COMPUTADOR_PORTATIL computador: computadores){
+            System.out.println(lineas);
+            if (computador.isDisponible()){
+                System.out.println("serial: "+computador.getSerial()+ "\n");
+                System.out.println("marca: "+computador.getMarca()+ "\n");
+                System.out.println("tamaño: "+computador.getTamano()+ "\n");
+                System.out.println("precio: "+computador.getPrecio()+ "\n");
+                System.out.println("sistema Operativo: "+computador.getSistemaOperativo()+ "\n");
+                System.out.println("procesador: "+computador.getProcesador()+ "\n");
+                System.out.println("Disponible: "+computador.isDisponible()+ "\n");
+            }
+
+        }
+        System.out.println(lineas);
+
+        for (TABLETA_GRAFICA tablet: tabletaGraficas){
+            System.out.println(lineas);
+            if (tablet.isDisponible()){
+                System.out.println("serial: "+tablet.getSerial()+ "\n");
+                System.out.println("marca: "+tablet.getMarca()+ "\n");
+                System.out.println("tamaño: "+tablet.getTamano()+ "\n");
+                System.out.println("precio: "+tablet.getPrecio()+ "\n");
+                System.out.println("almacenamiento: "+tablet.getAlmacenamiento()+ "\n");
+                System.out.println("peso: "+tablet.getPeso()+ "\n");
+                System.out.println("Disponible: "+tablet.isDisponible()+ "\n");
+            }
+        }
+
+    }
+
     // Metodo para exportar los estudiantes De ingenieria
-    private void exportarIngenieros(LinkedList<ESTUDIANTE_INGENIERIA> estudiantesIngenieria, LinkedList<COMPUTADOR_PORTATIL> computadoresPortatiles, LinkedList<String> serialIngenieria){
+    private void exportarIngenieros(LinkedList<ESTUDIANTE_INGENIERIA> estudiantesIngenieria, LinkedList<COMPUTADOR_PORTATIL> computadoresPortatiles){
 
         exportarI(estudiantesIngenieria);
         exportarC(computadoresPortatiles);
-        exportarS(serialIngenieria);
 
     }
 
@@ -466,17 +601,12 @@ public class Operaciones {
         Exportar exportar=new Exportar();
         exportar.exportarARchivoComputador(computadoresPortatiles);
     }
-    private void exportarS(LinkedList<String> serialIngenieria){
-        Exportar exportar=new Exportar();
-        exportar.exportarARchivoSerialIngeniero(serialIngenieria);
-    }
 
     // Metodo para exportar los estudiantes De Diseño
-    private void exportarDisenadores(LinkedList<ESTUDIANTE_DISENO> estudiantesDiseno, LinkedList<TABLETA_GRAFICA> tabletasGraficas, LinkedList<Integer> serialDiseno){
+    private void exportarDisenadores(LinkedList<ESTUDIANTE_DISENO> estudiantesDiseno, LinkedList<TABLETA_GRAFICA> tabletasGraficas){
 
         exportarD(estudiantesDiseno);
         exportarT(tabletasGraficas);
-        exportarSd(serialDiseno);
 
     }
 
@@ -488,10 +618,5 @@ public class Operaciones {
         Exportar exportar=new Exportar();
         exportar.exportarARchivoTableta(tabletasGraficas);
     }
-    private void exportarSd(LinkedList<Integer> serialDiseno){
-        Exportar exportar=new Exportar();
-        exportar.exportarARchivoSerialDiseno(serialDiseno);
-    }
-
 
 }

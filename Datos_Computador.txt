@@ -1,28 +1,48 @@
-serial: 072z0o
-marca: asus
-tamaño: 654.0
-precio: 465.0
+serial: 02I890
+marca: Asus
+tamaño: 17.0
+precio: 1500000.0
 sistema Operativo: Windows 11
 procesador: Intel® Core™ i5
+Disponible: false
 -----------------------------
-serial: 0W0MmL
-marca: oni
-tamaño: 654.0
-precio: 47788.0
+serial: 4rtza7
+marca: Lenovo
+tamaño: 18.0
+precio: 2400000.0
+sistema Operativo: Windows 11
+procesador: Intel® Core™ i5
+Disponible: false
+-----------------------------
+serial: 0V1fdP
+marca: Razer
+tamaño: 19.0
+precio: 2000000.0
 sistema Operativo: Windows 10
 procesador: AMD Ryzen
+Disponible: true
 -----------------------------
-serial: 0oJ2M4
-marca: asus
-tamaño: 34.0
-precio: 1.2E7
-sistema Operativo: Windows 11
+serial: 070Oe0
+marca: MSI
+tamaño: 17.0
+precio: 3000000.0
+sistema Operativo: Window 7
 procesador: AMD Ryzen
+Disponible: false
 -----------------------------
-serial: 08viN1
-marca: lg
-tamaño: 32.0
-precio: 200000.0
+serial: 0zjHAd
+marca: Dell
+tamaño: 19.0
+precio: 2500000.0
 sistema Operativo: Windows 11
-procesador: AMD Ryzen
+procesador: Intel® Core™ i5
+Disponible: true
+-----------------------------
+serial: 0219D6
+marca: Acer
+tamaño: 17.0
+precio: 4000000.0
+sistema Operativo: Windows 11
+procesador: Intel® Core™ i5
+Disponible: true
 -----------------------------

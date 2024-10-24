@@ -132,6 +132,7 @@ public class Importar {
     public LinkedList<COMPUTADOR_PORTATIL> importarArchivoComputador(){
 
         String rutaArchivo = "Datos_Computador.txt";
+
         File archivo = new File(rutaArchivo);
         if (!archivo.exists()) {
             return null;
@@ -145,6 +146,7 @@ public class Importar {
         double precio=0.0;
         String sistemaOperativo="";
         String procesador="";
+        boolean disponible=false;
 
         try (BufferedReader cp = new BufferedReader(new FileReader(rutaArchivo))){
             while ((line = cp.readLine()) != null){
@@ -173,7 +175,16 @@ public class Importar {
                     procesador=line.substring(12);
                     continue;
                 }
-                Dispositivos.add(new COMPUTADOR_PORTATIL(serial,marca,tamano,precio,sistemaOperativo,procesador));
+                if (line.startsWith("Disponible: ")){
+                    String dato = line.substring(12);
+                    if (dato.equalsIgnoreCase("true")){
+                        disponible=true;
+                    }else {
+                        disponible=false;
+                    }
+                    continue;
+                }
+                Dispositivos.add(new COMPUTADOR_PORTATIL(serial,marca,tamano,precio,sistemaOperativo,procesador,disponible));
             }
 
         }catch (IOException e) {
@@ -200,6 +211,7 @@ public class Importar {
         double precio=0.0;
         String almacenamiento="";
         double peso=0.0;
+        boolean disponible=false;
 
         try (BufferedReader cp = new BufferedReader(new FileReader(rutaArchivo))){
             while ((line = cp.readLine()) != null){
@@ -228,7 +240,16 @@ public class Importar {
                     peso=Double.parseDouble(line.substring(6));
                     continue;
                 }
-                Dispositivos.add(new TABLETA_GRAFICA(serial,marca,tamano,precio,almacenamiento,peso));
+                if (line.startsWith("Disponible: ")){
+                    String dato = line.substring(12);
+                    if (dato.equalsIgnoreCase("true")){
+                        disponible=true;
+                    }else {
+                        disponible=false;
+                    }
+                    continue;
+                }
+                Dispositivos.add(new TABLETA_GRAFICA(serial,marca,tamano,precio,almacenamiento,peso,disponible));
             }
 
         }catch (IOException e) {
@@ -237,68 +258,6 @@ public class Importar {
 
 
         return Dispositivos;
-    }
-
-    public LinkedList<String> importarArchivoSrialIngenieros(){
-
-        String rutaArchivo = "Datos_Serial_Ingeniero.txt";
-        File archivo = new File(rutaArchivo);
-        if (!archivo.exists()) {
-            return null;
-        }
-
-        LinkedList<String> serialIngenieros = new LinkedList<>();
-        String line;
-        String serial="";
-
-        try (BufferedReader cp = new BufferedReader(new FileReader(rutaArchivo))){
-            while ((line = cp.readLine()) != null){
-
-                if (line.startsWith("serial: ")){
-                    serial=line.substring(8);
-                    continue;
-                }
-
-                serialIngenieros.add(serial);
-            }
-
-        }catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-        return serialIngenieros;
-    }
-
-    public LinkedList<Integer> importarArchivoSerialDiseno(){
-
-        String rutaArchivo = "Datos_Serial_Diseño.txt";
-        File archivo = new File(rutaArchivo);
-        if (!archivo.exists()) {
-            return null;
-        }
-
-        LinkedList<Integer> serialDiseno = new LinkedList<>();
-        String line;
-        String serial="";
-
-        try (BufferedReader cp = new BufferedReader(new FileReader(rutaArchivo))){
-            while ((line = cp.readLine()) != null){
-
-                if (line.startsWith("serial: ")){
-                    serial=line.substring(8);
-                    continue;
-                }
-
-                serialDiseno.add(Integer.parseInt(serial));
-            }
-
-        }catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-        return serialDiseno;
     }
 
 }

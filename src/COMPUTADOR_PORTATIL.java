@@ -3,8 +3,8 @@ public class COMPUTADOR_PORTATIL extends Dispositivo{
     private String procesador;
 
 
-    public COMPUTADOR_PORTATIL(String serial, String marca, double tamano, double precio, String sistemaOperativo, String procesador) {
-        super(serial, marca, tamano, precio);
+    public COMPUTADOR_PORTATIL(String serial, String marca, double tamano, double precio, String sistemaOperativo, String procesador,boolean disponible) {
+        super(serial, marca, tamano, precio,disponible);
         this.sistemaOperativo = sistemaOperativo;
         this.procesador = procesador;
     }
