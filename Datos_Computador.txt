@@ -20,7 +20,7 @@ tamaño: 19.0
 precio: 2000000.0
 sistema Operativo: Windows 10
 procesador: AMD Ryzen
-Disponible: true
+Disponible: false
 -----------------------------
 serial: 070Oe0
 marca: MSI
@@ -45,4 +45,12 @@ precio: 4000000.0
 sistema Operativo: Windows 11
 procesador: Intel® Core™ i5
 Disponible: true
+-----------------------------
+serial: 0s880N
+marca: Apple
+tamaño: 20.0
+precio: 3500000.0
+sistema Operativo: Windows 11
+procesador: AMD Ryzen
+Disponible: false
 -----------------------------

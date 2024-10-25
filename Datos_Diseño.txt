@@ -38,3 +38,11 @@ Modalidad de estudio: Presencial
 cantidad de asignaturas: 4
 Serial: 88137
 -----------------------------
+Cedula: 123477j4a
+Nombre: Estefania
+Apellido: Durango
+Telefono: 3156284976
+Modalidad de estudio: Gracias por su elección
+cantidad de asignaturas: 4
+Serial: 84781
+-----------------------------

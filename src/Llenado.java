@@ -305,7 +305,16 @@ public class Llenado {
 
         if(count>0) {
             System.out.println("Digite el serial del computador que le gusto ó digite NO para escoger las especificaciones: ");
-            return validar.eleccionAValidar(3,cp.readLine());
+            String opcion=validar.eleccionAValidar(3,cp.readLine());
+            while (true){
+                if (serialesDisponibles.contains(opcion) || opcion.equalsIgnoreCase("no")){
+                    return opcion;
+                }else {
+                    System.out.println("Dato no valido, digite el serial del computador que le gusto ó digite NO para escoger las especificaciones: ");
+                    opcion=validar.eleccionAValidar(3,cp.readLine());
+                }
+            }
+
         }else {
             System.out.println("-------------------------------------------------------------------------------------");
             System.out.println("\nDigite los datos del computador que desea: \n");
@@ -375,7 +384,15 @@ public class Llenado {
         if (cout>0){
 
             System.out.println("Digite el serial de la tableta que le gusto ó digite NO para escoger las especificaciones: ");
-            return validar.eleccionAValidar(3,cp.readLine());
+            String opcion=validar.eleccionAValidar(3,cp.readLine());
+            while (true){
+                if (serialesDisponibles.contains(opcion) || opcion.equalsIgnoreCase("no")){
+                    return opcion;
+                }else {
+                    System.out.println("Dato no valido, digite el serial de la tableta que le gusto ó digite NO para escoger las especificaciones: ");
+                    opcion=validar.eleccionAValidar(3,cp.readLine());
+                }
+            }
         }else {
             System.out.println("-------------------------------------------------------------------------------------");
             System.out.println("\nDigite los datos de la tableta que desea: \n");

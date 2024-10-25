@@ -13,8 +13,6 @@ public class Operaciones {
     public Operaciones() {
         Importar importar=new Importar();
 
-        String lineas="--------------------------------------------";
-        System.out.println(lineas);
         // se importa y se verifica que haya datos sobre los estudiantes de ingenieria
         LinkedList<ESTUDIANTE_INGENIERIA> verificar = importar.importarArchivoIngnieria();
         if (verificar!=null){
@@ -88,7 +86,7 @@ public class Operaciones {
                             if (validar.isInt(opcionIngenieria)){
                                 switch (opcionIngenieria){
                                     case "1":
-
+                                        System.out.println(lineas);
                                         ESTUDIANTE_INGENIERIA newEstudiante = llenar.llenarIngeniero(llenar.serialStrings(estudiantesIngenieria));
 
 
@@ -108,15 +106,17 @@ public class Operaciones {
                                             newComputador=llenar.llenarComputador(newEstudiante.getSerial());
                                             computadoresPortatiles.add(newComputador);
                                         }
-
+                                        System.out.println(lineas);
                                         System.out.println("El serial asignado a usted es: " + newEstudiante.getSerial());
+                                        System.out.println(lineas);
                                         estudiantesIngenieria.add(newEstudiante);
                                         exportarIngenieros(estudiantesIngenieria,computadoresPortatiles);
                                         break;
                                     case "2":
                                         Importar importar=new Importar();
 
-                                        System.out.println("ingrese la cedula o el serial a modifcar: ");
+                                        System.out.println(lineas);
+                                        System.out.println("\nIngrese la cedula o el serial a modifcar: ");
 
                                         estudiantesIngenieria=modificarEstudianteIngenieria(estudiantesIngenieria,validar.eleccionAValidar(3, cp.readLine()),computadoresPortatiles);
 
@@ -125,8 +125,8 @@ public class Operaciones {
                                         exportarI(estudiantesIngenieria);
                                         break;
                                     case "3":
-
-                                        System.out.println("ingrese la cedula o el serial para hacer la devolución: ");
+                                        System.out.println(lineas);
+                                        System.out.println("\nIngrese la cedula o el serial para hacer la devolución: ");
 
                                         ArrayList<Integer> datos=dispositivoIngenieria(validar.eleccionAValidar(3, cp.readLine()));
                                         // 0 , 1
@@ -135,7 +135,9 @@ public class Operaciones {
                                             estudiantesIngenieria.remove(estudiantesIngenieria.get(datos.get(1)));
                                             // indice del computador
                                             computadoresPortatiles.get(datos.get(2)).setDisponible(true);
-                                            System.out.println("Devolucion hecha");
+                                            System.out.println(lineas);
+                                            System.out.println("\nDevolucion hecha\n");
+                                            System.out.println(lineas);
                                             exportarIngenieros(estudiantesIngenieria,computadoresPortatiles);
                                         }else {
                                             System.out.println("El estudiante no tiene un registro");
@@ -144,7 +146,8 @@ public class Operaciones {
 
                                         break;
                                     case "4":
-                                        System.out.println("Ingrese la cedula o serial del prestamo del estudiante a buscar");
+                                        System.out.println(lineas);
+                                        System.out.println("\nIngrese la cedula o serial del prestamo del estudiante a buscar");
                                         buscarIngenieria(estudiantesIngenieria, computadoresPortatiles,validar.eleccionAValidar(3, cp.readLine()) );
 
                                         break;
@@ -153,6 +156,7 @@ public class Operaciones {
 
                                         break;
                                     default:
+                                        System.out.println(lineas);
                                         System.out.println("Digite por favor un dato valido");
 
                                 }
@@ -179,9 +183,8 @@ public class Operaciones {
                             if (validar.isInt(opcionDiseno)){
                                 switch (opcionDiseno){
                                     case "1":
+                                        System.out.println(lineas);
                                         ESTUDIANTE_DISENO newEstudiante = llenar.llenarDiseno(llenar.serialEnteros(estudiantesDiseno));
-
-
 
                                         TABLETA_GRAFICA newTableta_GRAFICA = llenar.asignarTableta(tabletasGraficas);
 
@@ -203,7 +206,7 @@ public class Operaciones {
                                             newTableta_GRAFICA = llenar.llenarTableta_GRAFICA(newEstudiante.getSerial());
                                             tabletasGraficas.add(newTableta_GRAFICA);
                                         }
-
+                                        System.out.println(lineas);
                                         System.out.println("El serial generado aleatoriamente es: "+newEstudiante.getSerial());
                                         estudiantesDiseno.add(newEstudiante);
                                         exportarDisenadores(estudiantesDiseno,tabletasGraficas);
@@ -211,7 +214,7 @@ public class Operaciones {
                                     case "2":
                                         Importar importar=new Importar();
 
-
+                                        System.out.println(lineas);
                                         System.out.println("ingrese la cedula o el serial a modifcar: ");
 
                                         estudiantesDiseno=modificarEstudianteDiseno(estudiantesDiseno,validar.eleccionAValidar(3, cp.readLine()),tabletasGraficas);
@@ -223,6 +226,7 @@ public class Operaciones {
                                         break;
                                     case "3":
 
+                                        System.out.println(lineas);
                                         System.out.println("ingrese la cedula o el serial a eliminar: ");
 
                                         ArrayList<Integer> datos=dispositivoDiseno(validar.eleccionAValidar(3, cp.readLine()));
@@ -231,11 +235,17 @@ public class Operaciones {
 
                                             tabletasGraficas.get(datos.get(2)).setDisponible(true);
 
-                                            System.out.println("Devolucion hecha");
+
+                                            System.out.println(lineas);
+                                            System.out.println("\nDevolucion hecha\n");
+                                            System.out.println(lineas);
+
                                             exportarDisenadores(estudiantesDiseno,tabletasGraficas);
 
                                         }else {
+                                            System.out.println(lineas);
                                             System.out.println("El estudiante no tiene un registro");
+                                            System.out.println(lineas);
                                         }
 
                                         break;
@@ -265,9 +275,11 @@ public class Operaciones {
                         flagMenu=false;
                         break;
                     default:
+                        System.out.println(lineas);
                         System.out.println("Digite por favor un dato valido");
                 }
             }else {
+                System.out.println(lineas);
                 System.out.println("Digite por favor un dato valido");
             }
         }
@@ -526,10 +538,10 @@ public class Operaciones {
         System.out.println("\n--- INVENTARIO NO DISPONIBLE ---\n");
 
         for (ESTUDIANTE_INGENIERIA estudiante : estudianteI){
-            System.out.println(lineas);
             System.out.println(estudiante.getNombre()+" "+estudiante.getApellido());
 
             for (COMPUTADOR_PORTATIL computadorPortatil: computadores){
+
                 if (computadorPortatil.getSerial().equals(estudiante.getSerial())){
 
                     System.out.println("Tiene un prestamo activo del computador portatil: " + computadorPortatil.getMarca() +
@@ -541,11 +553,11 @@ public class Operaciones {
         }
 
         for (ESTUDIANTE_DISENO estudiante: estudianteD){
-            System.out.println(lineas);
             System.out.println(estudiante.getNombre()+" "+estudiante.getApellido());
 
             for (TABLETA_GRAFICA tableta: tabletaGraficas){
                 if (String.valueOf(estudiante.getSerial()).equals(tableta.getSerial())){
+
                     System.out.println("Tiene un prestamo activo de la Tableta Grafica: " + tableta.getMarca() +
                             " \nCon un almacenamiento de : " + tableta.getAlmacenamiento());
                     break;

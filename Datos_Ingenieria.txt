@@ -22,3 +22,19 @@ Semestre actual: 5
 Promedio acumulado: 3.8
 Serial: 4rtza7
 -----------------------------
+Cedula: 798ss45
+Nombre: Isaac
+Apellido: Rodrigues
+Telefono: 3145947862
+Semestre actual: 4
+Promedio acumulado: 4.4
+Serial: 0s880N
+-----------------------------
+Cedula: 7888ss754
+Nombre: Erika
+Apellido: Gomez
+Telefono: 315647894
+Semestre actual: 8
+Promedio acumulado: 4.6
+Serial: 0V1fdP
+-----------------------------

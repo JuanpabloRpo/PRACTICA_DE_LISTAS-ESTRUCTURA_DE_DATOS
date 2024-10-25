@@ -54,3 +54,11 @@ almacenamiento: 1 TB
 peso: 16.0
 Disponible: false
 -----------------------------
+serial: 84781
+marca: OppoGreyMax
+tamaño: 12.0
+precio: 2500000.0
+almacenamiento: 1 TB
+peso: 16.0
+Disponible: false
+-----------------------------
