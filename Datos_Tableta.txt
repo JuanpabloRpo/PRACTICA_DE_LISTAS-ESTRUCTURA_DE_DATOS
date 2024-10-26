@@ -12,7 +12,7 @@ tamaño: 16.0
 precio: 4000000.0
 almacenamiento: 1 TB
 peso: 20.0
-Disponible: true
+Disponible: false
 -----------------------------
 serial: 43214
 marca: WacomIntuosPro
@@ -20,7 +20,7 @@ tamaño: 17.0
 precio: 2500000.0
 almacenamiento: 1 TB
 peso: 15.0
-Disponible: false
+Disponible: true
 -----------------------------
 serial: 88137
 marca: PPenArtist
@@ -28,7 +28,7 @@ tamaño: 16.0
 precio: 2000000.0
 almacenamiento: 512 GB
 peso: 14.0
-Disponible: false
+Disponible: true
 -----------------------------
 serial: 77855
 marca: WacomOnebyWacomMedium
@@ -60,5 +60,21 @@ tamaño: 12.0
 precio: 2500000.0
 almacenamiento: 1 TB
 peso: 16.0
+Disponible: false
+-----------------------------
+serial: 73528
+marca: Amazon
+tamaño: 16.0
+precio: 3500000.0
+almacenamiento: 1 TB
+peso: 16.0
+Disponible: false
+-----------------------------
+serial: 53264
+marca: TCL
+tamaño: 16.0
+precio: 1000000.0
+almacenamiento: 256 GB
+peso: 17.0
 Disponible: false
 -----------------------------

@@ -274,6 +274,7 @@ public class Llenado {
                 count++;
 
                 if (count==1) {
+                    System.out.println("-------------------------------------------------------------------");
                     System.out.println("\nEn este momento tenemos disponibles los siguientes computadores: ");
                 }
                 serialesDisponibles.add(dispositivo.getSerial());
@@ -352,6 +353,7 @@ public class Llenado {
             if (dispositivo.isDisponible()){
                 cout++;
                 if (cout==1){
+                    System.out.println("-------------------------------------------------------------------");
                     System.out.println("\n----- En este momento tenemos disponibles las siguientes tablets: ");
                 }
                 System.out.println("-------------------------------------------");

@@ -36,7 +36,7 @@ tamaño: 19.0
 precio: 2500000.0
 sistema Operativo: Windows 11
 procesador: Intel® Core™ i5
-Disponible: true
+Disponible: false
 -----------------------------
 serial: 0219D6
 marca: Acer
@@ -52,5 +52,21 @@ tamaño: 20.0
 precio: 3500000.0
 sistema Operativo: Windows 11
 procesador: AMD Ryzen
+Disponible: false
+-----------------------------
+serial: 04JxyA
+marca: Toshiba
+tamaño: 16.0
+precio: 2500000.0
+sistema Operativo: Windows 11
+procesador: AMD Ryzen
+Disponible: false
+-----------------------------
+serial: 0fh1R9
+marca: MSI
+tamaño: 19.0
+precio: 4000000.0
+sistema Operativo: Windows 11
+procesador: Intel® Core™ i5
 Disponible: false
 -----------------------------

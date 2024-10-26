@@ -20,7 +20,7 @@ Apellido: Ramirez
 Telefono: 345781645
 Modalidad de estudio: Presencial
 cantidad de asignaturas: 6
-Serial: 43214
+Serial: 82486
 -----------------------------
 Cedula: 78sd54
 Nombre: Samuel
@@ -30,14 +30,6 @@ Modalidad de estudio: Virtual
 cantidad de asignaturas: 5
 Serial: 42763
 -----------------------------
-Cedula: 7854ddf
-Nombre: Camila
-Apellido: Gonzales
-Telefono: 456774441
-Modalidad de estudio: Presencial
-cantidad de asignaturas: 4
-Serial: 88137
------------------------------
 Cedula: 123477j4a
 Nombre: Estefania
 Apellido: Durango
@@ -45,4 +37,20 @@ Telefono: 3156284976
 Modalidad de estudio: Gracias por su elección
 cantidad de asignaturas: 4
 Serial: 84781
+-----------------------------
+Cedula: 54578944a
+Nombre: Camila
+Apellido: Uribe
+Telefono: 3156284975
+Modalidad de estudio: Virtual
+cantidad de asignaturas: 4
+Serial: 73528
+-----------------------------
+Cedula: 789a45k16
+Nombre: Jairo
+Apellido: canaveral
+Telefono: 3164975218
+Modalidad de estudio: Presencial
+cantidad de asignaturas: 6
+Serial: 53264
 -----------------------------

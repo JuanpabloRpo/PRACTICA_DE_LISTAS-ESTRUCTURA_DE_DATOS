@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 
 public class Validacion {
@@ -16,6 +18,9 @@ public class Validacion {
             // verificamos si no contiene letras
             double newDato=Double.parseDouble(dato);
 
+            if (dato.contains(".")){
+                return false;
+            }
             // verificamos que no sea negativo
             if (newDato < 0){
                 return false;
@@ -188,7 +193,7 @@ public class Validacion {
             IsTrue = Double.parseDouble(eleccionAValidar(opcion,cadena ));
         }
 
-        if (isInt(String.valueOf(IsTrue))){
+        if (opcion==1){
             return String.valueOf((int)IsTrue);
         }else {
             return String.valueOf(IsTrue);
