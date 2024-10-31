@@ -34,7 +34,7 @@ public class Llenado {
         apellido = validar.eleccionAValidar(5,cp.readLine());
 
         System.out.println("Ingrese el telefono: ");
-        telefono =  validar.eleccionAValidar(1,cp.readLine());
+        telefono =  validar.eleccionAValidar(7,cp.readLine());
        
         System.out.println("Ingrese el numero del semestre actual: ");
         numeroDelSemestreActual = Integer.parseInt(validar.eleccionAValidarSinSobrepasar(1,cp.readLine(),10));
@@ -64,7 +64,7 @@ public class Llenado {
         apellido = validar.eleccionAValidar(5,cp.readLine());
  
         System.out.println("Ingrese el telefono: ");
-        telefono =  validar.eleccionAValidar(1,cp.readLine());
+        telefono =  validar.eleccionAValidar(7,cp.readLine());
 
         modalidad = opcionEstudio();
 

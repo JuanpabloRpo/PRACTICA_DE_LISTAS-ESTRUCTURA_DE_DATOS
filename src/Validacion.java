@@ -1,8 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 
 public class Validacion {
@@ -10,7 +8,7 @@ public class Validacion {
     public Validacion() {
     }
 
-    // Devuelve true si es un entero
+    // Devuelve true si es un entero positivo
     public boolean isInt(String dato){
 
         try {
@@ -39,7 +37,7 @@ public class Validacion {
 
     }
 
-    // Devuelve true si es un boolean
+    // Devuelve true si es un numero real positivo
     public boolean isDouble(String dato){
 
         try {
@@ -55,7 +53,7 @@ public class Validacion {
         }
     }
 
-    // Devuelve un true si contiene caracteres especiales
+    // Devuelve un false si contiene caracteres especiales
     public boolean withOutSpecialCharacter(String cadena){
 
         int ascii;
@@ -69,7 +67,7 @@ public class Validacion {
         return true;
     }
 
-    // Devuelve un true si contiene caracteres especiales y numeros
+    // Devuelve un false si contiene caracteres especiales y numeros
     public boolean withOutSpecialCharacterAndNumbers(String cadena){
 
         int ascii;
@@ -84,7 +82,7 @@ public class Validacion {
         return true;
     }
 
-    // Valida que no tenga caracteres especiales ni numeros
+    // Devuelve un false si contiene caracteres especiales y numeros, pero permite los espacios
     public boolean forFullName(String cadena){
 
         int ascii;
@@ -108,7 +106,7 @@ public class Validacion {
 
         switch (opcion){
             case 1:
-                // para saber si es un numero entero
+                // Verificamos que si o si sea un numero entero
                 IsTrue = isInt(cadena);
                 while (!IsTrue){
                         System.out.println(cadena+" No es un entero positivo, Digite nuevamente: ");
@@ -118,7 +116,7 @@ public class Validacion {
                 }
                 return cadena;
             case 2:
-                // para saber si es un numero real
+
                 IsTrue = isDouble(cadena);
                 while (!IsTrue){
                     System.out.println(cadena+" No es un numero real positivo, Digite nuevamente: ");
@@ -166,6 +164,15 @@ public class Validacion {
                     IsTrue= isCedulaRepeat(cedulasEstudiantes(),cadena);
                 }
 
+                return cadena;
+
+            case 7:
+                cadena = eleccionAValidar(1,cadena);
+
+                while (cadena.length()>10){
+                    System.out.println("El numero telefonico: "+cadena+" tiene demasiados digitos, ingreselo nuevamente: ");
+                    cadena = eleccionAValidar(1, cp.readLine());
+                }
                 return cadena;
 
             default:

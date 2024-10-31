@@ -9,6 +9,7 @@ public class Importar {
 
     }
 
+    // Metodo para importar los estudiantes de ingenieria almacenados
     public LinkedList<ESTUDIANTE_INGENIERIA> importarArchivoIngnieria(){
         String rutaArchivo = "Datos_Ingenieria.txt";
 
@@ -69,6 +70,7 @@ public class Importar {
         return listaDePersonas;
     }
 
+    // Metodo para importar los estudiantes de diseño almacenados
     public LinkedList<ESTUDIANTE_DISENO> importarArchivoDiseno(){
 
         String rutaArchivo = "Datos_Diseño.txt";
@@ -129,6 +131,7 @@ public class Importar {
         return listaDePersonas;
     }
 
+    // Metodo para importar los computadores almacenados
     public LinkedList<COMPUTADOR_PORTATIL> importarArchivoComputador(){
 
         String rutaArchivo = "Datos_Computador.txt";
@@ -195,6 +198,7 @@ public class Importar {
         return Dispositivos;
     }
 
+    // Metodo para importar las tablets almacenadas
     public LinkedList<TABLETA_GRAFICA> importarArchivoTableta(){
 
         String rutaArchivo = "Datos_Tableta.txt";

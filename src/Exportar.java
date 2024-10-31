@@ -9,6 +9,7 @@ public class Exportar {
     public Exportar() {
     }
 
+    // Metodo para exportar los estudiantes de ingenieria almacenados en las listas
     public void exportarARchivoIngenieria(LinkedList<ESTUDIANTE_INGENIERIA> listaDeEstudiantes){
 
         if (!listaDeEstudiantes.isEmpty()){
@@ -38,6 +39,7 @@ public class Exportar {
 
     }
 
+    // Metodo para exportar los estudiantes de diseño almacenados en las listas
     public void exportarARchivoDiseno(LinkedList<ESTUDIANTE_DISENO> listaDeEstudiantes){
 
         if (!listaDeEstudiantes.isEmpty()){
@@ -66,6 +68,7 @@ public class Exportar {
         }
     }
 
+    // Metodo para exportar los computadores almacenados en las listas
     public void exportarARchivoComputador(LinkedList<COMPUTADOR_PORTATIL> listaDeDispositivos){
 
         if (!listaDeDispositivos.isEmpty()){
@@ -94,6 +97,7 @@ public class Exportar {
         }
     }
 
+    // Metodo para exportar las tablets almacenadas en las listas
     public void exportarARchivoTableta(LinkedList<TABLETA_GRAFICA> listaDeDispositivos){
 
         if (!listaDeDispositivos.isEmpty()){

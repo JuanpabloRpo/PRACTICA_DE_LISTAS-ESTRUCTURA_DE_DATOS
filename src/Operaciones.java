@@ -8,8 +8,8 @@ public class Operaciones {
     private LinkedList<ESTUDIANTE_DISENO> estudiantesDisenoGlobal = new LinkedList<>();
     private LinkedList<TABLETA_GRAFICA> tabletasGraficasGlobal = new LinkedList<>();
     private LinkedList<COMPUTADOR_PORTATIL> computadoresPortatilesGlobal = new LinkedList<>();
-    
 
+    // Se utiliza el constructor para importar los datos gurdados en el txt
     public Operaciones() {
         Importar importar=new Importar();
 
@@ -80,6 +80,8 @@ public class Operaciones {
                         String opcionIngenieria= validar.eleccionAValidarSinSobrepasar(1, cp.readLine(), 5);
 
                         switch (opcionIngenieria){
+
+                            // Registrar prestamo estudiantes ingenieria
                             case "1":
                                 System.out.println(lineas);
                                 ESTUDIANTE_INGENIERIA newEstudiante = llenar.llenarIngeniero(llenar.serialStrings(estudiantesIngenieria));
@@ -107,6 +109,8 @@ public class Operaciones {
                                 estudiantesIngenieria.add(newEstudiante);
                                 exportarIngenieros(estudiantesIngenieria,computadoresPortatiles);
                                 break;
+
+                            // Modificar prestamo estudiantes ingenieria
                             case "2":
                                 Importar importar=new Importar();
 
@@ -120,6 +124,8 @@ public class Operaciones {
 
                                 exportarI(estudiantesIngenieria);
                                 break;
+
+                            // devolución equipo estudiantes ingenieria
                             case "3":
                                 System.out.println(lineas);
                                 System.out.println("\nIngrese la cedula o el serial para hacer la devolución: ");
@@ -141,12 +147,16 @@ public class Operaciones {
 
 
                                 break;
+
+                            // Buscar equipo estudiantes ingenieria
                             case "4":
                                 System.out.println(lineas);
                                 System.out.println("\nIngrese la cedula o serial del prestamo del estudiante a buscar: ");
                                 buscarIngenieria(estudiantesIngenieria, computadoresPortatiles,validar.eleccionAValidar(3, cp.readLine()) );
 
                                 break;
+
+                            // Salir del menu de los estudiantes de ingenieria
                             case "5":
                                 flagMenuIngenieria=false;
 
@@ -175,7 +185,10 @@ public class Operaciones {
                         String opcionDiseno= validar.eleccionAValidarSinSobrepasar(1, cp.readLine(), 5);
 
                         switch (opcionDiseno){
+
+                            // Registrar prestamo estudiantes diseño
                             case "1":
+
                                 System.out.println(lineas);
                                 ESTUDIANTE_DISENO newEstudiante = llenar.llenarDiseno(llenar.serialEnteros(estudiantesDiseno));
 
@@ -204,6 +217,8 @@ public class Operaciones {
                                 estudiantesDiseno.add(newEstudiante);
                                 exportarDisenadores(estudiantesDiseno,tabletasGraficas);
                                 break;
+
+                            // Modificar prestamo estudiantes diseño
                             case "2":
                                 Importar importar=new Importar();
 
@@ -216,10 +231,10 @@ public class Operaciones {
                                 tabletasGraficas = importar.importarArchivoTableta();
 
                                 exportarD(estudiantesDiseno);
-
                                 break;
-                            case "3":
 
+                            // devolución equipo estudiantes diseño
+                            case "3":
                                 System.out.println(lineas);
                                 System.out.println("ingrese la cedula o el serial a eliminar: ");
 
@@ -241,14 +256,17 @@ public class Operaciones {
                                     System.out.println("El estudiante no tiene un registro");
                                     System.out.println(lineas);
                                 }
-
                                 break;
+
+                            // Buscar equipo estudiantes diseño
                             case "4":
                                 System.out.println(lineas);
                                 System.out.println("Ingrese la cedula o serial del prestamo del estudiante a buscar: ");
                                 buscardiseno(estudiantesDiseno, tabletasGraficas,validar.eleccionAValidar(3, cp.readLine()) );
 
                                 break;
+
+                            // Salir del menu de los estudiantes de diseño
                             case "5":
                                 flagMenuDiseno=false;
                                 break;
@@ -275,7 +293,7 @@ public class Operaciones {
         }
     }
 
-    // Metodo para modificar el prestamo de que hizo un estudiante de ingenieria
+    // Metodo para modificar el prestamo que hizo un estudiante de ingenieria
     public LinkedList<ESTUDIANTE_INGENIERIA> modificarEstudianteIngenieria(LinkedList<ESTUDIANTE_INGENIERIA> estudiantesIngenieria, String buscar, LinkedList<COMPUTADOR_PORTATIL> computadoresPortatiles) throws IOException{
 
         Llenado llenar=new Llenado();
@@ -334,7 +352,7 @@ public class Operaciones {
         return estudiantesIngenieria;
     }
 
-    // Metodo para modificar el prestamo de que hizo un estudiante de ingenieria
+    // Metodo para modificar el prestamo que hizo un estudiante de diseño
     public LinkedList<ESTUDIANTE_DISENO> modificarEstudianteDiseno(LinkedList<ESTUDIANTE_DISENO> estudiantesDiseno,String buscar, LinkedList<TABLETA_GRAFICA> tabletaGraficas) throws IOException{
 
         Llenado llenar=new Llenado();
@@ -396,7 +414,7 @@ public class Operaciones {
         return estudiantesDiseno;
     }
 
-    // Metodo devolucion ingenieria
+    // Metodo para devolver el computador prestado por un estudiante de ingenieria
     public ArrayList<Integer> dispositivoIngenieria(String buscar){
 
         Importar importar = new Importar();
@@ -431,7 +449,7 @@ public class Operaciones {
         return datos;
     }
 
-    // Metodo devolucion diseño
+    // Metodo para devolver el computador prestado de un estudiante de diseño
     public ArrayList<Integer> dispositivoDiseno(String buscar){
 
         Importar importar = new Importar();
@@ -524,7 +542,7 @@ public class Operaciones {
         }
     }
 
-    // Metodo para mostrar el inventario total
+    // Metodo para mostrar el inventario total (estudiantes de ingenieria, estudiantes de diseño, computadores y tablets; tanto disponibles como no disponibles)
     public void mostrarInventario(LinkedList<ESTUDIANTE_INGENIERIA> estudianteI,LinkedList<ESTUDIANTE_DISENO> estudianteD,LinkedList<COMPUTADOR_PORTATIL> computadores,LinkedList<TABLETA_GRAFICA> tabletaGraficas){
 
         String lineas="------------------------------------------------------------";
@@ -609,7 +627,7 @@ public class Operaciones {
 
     }
 
-    // Metodo para exportar los estudiantes De ingenieria
+    // Metodo para exportar los estudiantes De ingenieria y los computadores
     private void exportarIngenieros(LinkedList<ESTUDIANTE_INGENIERIA> estudiantesIngenieria, LinkedList<COMPUTADOR_PORTATIL> computadoresPortatiles){
 
         exportarI(estudiantesIngenieria);
@@ -617,16 +635,19 @@ public class Operaciones {
 
     }
 
+    // Metodo para exportar los estudiantes De ingenieria
     private void exportarI(LinkedList<ESTUDIANTE_INGENIERIA> estudiantesIngenieria){
         Exportar exportar=new Exportar();
         exportar.exportarARchivoIngenieria(estudiantesIngenieria);
     }
+
+    // Metodo para exportar los computadores
     private void exportarC(LinkedList<COMPUTADOR_PORTATIL> computadoresPortatiles){
         Exportar exportar=new Exportar();
         exportar.exportarARchivoComputador(computadoresPortatiles);
     }
 
-    // Metodo para exportar los estudiantes De Diseño
+    // Metodo para exportar los estudiantes De Diseño y las tabletas graficas
     private void exportarDisenadores(LinkedList<ESTUDIANTE_DISENO> estudiantesDiseno, LinkedList<TABLETA_GRAFICA> tabletasGraficas){
 
         exportarD(estudiantesDiseno);
@@ -634,10 +655,13 @@ public class Operaciones {
 
     }
 
+    // Metodo para exportar los estudiantes De Diseño
     private void exportarD(LinkedList<ESTUDIANTE_DISENO> estudiantesDiseno){
         Exportar exportar=new Exportar();
         exportar.exportarARchivoDiseno(estudiantesDiseno);
     }
+
+    // Metodo para exportar las tabletas graficas
     private void exportarT(LinkedList<TABLETA_GRAFICA> tabletasGraficas){
         Exportar exportar=new Exportar();
         exportar.exportarARchivoTableta(tabletasGraficas);
