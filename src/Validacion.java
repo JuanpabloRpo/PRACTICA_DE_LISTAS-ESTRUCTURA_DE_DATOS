@@ -186,7 +186,7 @@ public class Validacion {
     }
 
     // Metodo para verificar un dato y aparte que no se pase de un limite
-    public String eleccionAValidarSinSobrepasar(int opcion, String cadena,int noSobrepasar) throws IOException {
+    public String eleccionAValidarSinSobrepasar(int opcion, String cadena,double noSobrepasar) throws IOException {
 
         BufferedReader cp=new BufferedReader(new InputStreamReader(System.in));
 

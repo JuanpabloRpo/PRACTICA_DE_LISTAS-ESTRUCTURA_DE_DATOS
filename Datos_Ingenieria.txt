@@ -62,3 +62,11 @@ Semestre actual: 5
 Promedio acumulado: 3.7
 Serial: 0fh1R9
 -----------------------------
+Cedula: 1265pw12
+Nombre: Luisa
+Apellido: Zuares
+Telefono: 3126954861
+Semestre actual: 5
+Promedio acumulado: 3.4
+Serial: 0219D6
+-----------------------------

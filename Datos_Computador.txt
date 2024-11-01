@@ -44,7 +44,7 @@ tamaño: 17.0
 precio: 4000000.0
 sistema Operativo: Windows 11
 procesador: Intel® Core™ i5
-Disponible: true
+Disponible: false
 -----------------------------
 serial: 0s880N
 marca: Apple
