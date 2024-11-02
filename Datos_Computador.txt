@@ -12,7 +12,7 @@ tamaño: 18.0
 precio: 2400000.0
 sistema Operativo: Windows 11
 procesador: Intel® Core™ i5
-Disponible: false
+Disponible: true
 -----------------------------
 serial: 0V1fdP
 marca: Razer
@@ -60,7 +60,7 @@ tamaño: 16.0
 precio: 2500000.0
 sistema Operativo: Windows 11
 procesador: AMD Ryzen
-Disponible: false
+Disponible: true
 -----------------------------
 serial: 0fh1R9
 marca: MSI
@@ -68,5 +68,21 @@ tamaño: 19.0
 precio: 4000000.0
 sistema Operativo: Windows 11
 procesador: Intel® Core™ i5
-Disponible: false
+Disponible: true
+-----------------------------
+serial: 07l782
+marca: Asus
+tamaño: 24.4
+precio: 1250000.0
+sistema Operativo: Windows 11
+procesador: AMD Ryzen
+Disponible: true
+-----------------------------
+serial: 075ZhM
+marca: asus
+tamaño: 45.3
+precio: 12450.0
+sistema Operativo: Windows 11
+procesador: Intel® Core™ i5
+Disponible: true
 -----------------------------

@@ -14,14 +14,6 @@ Semestre actual: 4
 Promedio acumulado: 4.0
 Serial: 02I890
 -----------------------------
-Cedula: 348956kk
-Nombre: Pedro
-Apellido: Lopez
-Telefono: 314659874
-Semestre actual: 5
-Promedio acumulado: 3.8
-Serial: 4rtza7
------------------------------
 Cedula: 798ss45
 Nombre: Isaac
 Apellido: Rodrigues
@@ -38,14 +30,6 @@ Semestre actual: 8
 Promedio acumulado: 4.6
 Serial: 0V1fdP
 -----------------------------
-Cedula: 784951a45g
-Nombre: Ricardo
-Apellido: Maldonado
-Telefono: 312659847
-Semestre actual: 1
-Promedio acumulado: 4.2
-Serial: 04JxyA
------------------------------
 Cedula: 78944as45
 Nombre: Josue
 Apellido: Quiroz
@@ -53,14 +37,6 @@ Telefono: 3154597412
 Semestre actual: 6
 Promedio acumulado: 4.9
 Serial: 0zjHAd
------------------------------
-Cedula: 7829a45p
-Nombre: Lucas
-Apellido: Quiroz
-Telefono: 3265984627
-Semestre actual: 5
-Promedio acumulado: 3.7
-Serial: 0fh1R9
 -----------------------------
 Cedula: 1265pw12
 Nombre: Luisa
